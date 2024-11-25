@@ -565,6 +565,31 @@ div#layout-menu-container .closebtn:hover {
 }
 
 
+/* Default light mode */
+:root {
+  --background-color: white;
+  --text-color: black;
+  --link-color: blue;
+}
+
+/* Dark mode */
+body.dark-mode {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --link-color: #bb86fc;
+}
+
+/* Apply variables */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+
 /* Width to collapse sidebar */
 @media screen and (max-width: 1200px) {
 	div#header-text-container {
