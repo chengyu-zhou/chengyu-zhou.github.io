@@ -143,7 +143,7 @@ a, a > tt {
 
 a:hover, a:hover > tt{
 	/*border-bottom: 1.25px #0366d6 dashed;*/
-	color: #14003a;
+	color: #0366d6;
 	border-bottom: 1px gray solid;
 }
 
