@@ -574,29 +574,29 @@ div#layout-menu-container .closebtn:hover {
 
 /* Dark mode styles */
 body.dark-mode {
-    background-color: #121212; /* Dark background */
+    background-color: #313334; /* Dark background */
     color: white;  /* Light text color */
 }
 
 body.dark-mode a {
-    color: lightblue;  /* Light blue links in dark mode */
+    color: #66c7ff;  /* Light blue links in dark mode */
 }
 
 body.dark-mode #layout {
-    background-color: #333; /* Dark background for the layout */
+    background-color: #313334; /* Dark background for the layout */
 }
 
 body.dark-mode #header-container {
-    background-color: #222; /* Dark background for the header */
+    background-color: #313334; /* Dark background for the header */
 }
 
 body.dark-mode #footer-container {
-    background-color: #222; /* Dark background for the footer */
+    background-color: #313334; /* Dark background for the footer */
 }
 
 /* Menu in dark mode */
 body.dark-mode #layout-menu {
-    background-color: #333; /* Dark menu background */
+    background-color: #313334; /* Dark menu background */
     color: white; /* Light text color in the menu */
 }
 
