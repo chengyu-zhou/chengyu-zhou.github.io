@@ -611,7 +611,7 @@ body.dark-mode #text-img-container {
 body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3 {
-    color: #66c7ff; /* Light gray text for headers */
+    color: #f0ebe7; /* Light gray text for headers */
 }
 
 /* Dark mode for menu text */
@@ -620,7 +620,7 @@ body.dark-mode #layout-menu a {
 }
 
 body.dark-mode #layout-menu a:hover {
-    color: #ffffff; /* Pure white for hovered menu links */
+    color: #f0ebe7; /* Pure white for hovered menu links */
 }
 
 body.dark-mode div.menu-category {
