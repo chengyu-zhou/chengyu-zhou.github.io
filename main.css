@@ -603,7 +603,7 @@ body.dark-mode #layout-menu {
 /* If you have specific sections that need styling, ensure dark mode styles are added here too */
 body.dark-mode #text-container, 
 body.dark-mode #text-img-container {
-    background-color: #1e1e1e; /* Dark background for content */
+    background-color: #313334; /* Dark background for content */
     color: white; /* Light text */
 }
 
