@@ -572,11 +572,39 @@ div#layout-menu-container .closebtn:hover {
   --link-color: #0366d6;
 }
 
-/* Dark mode */
+/* Dark mode styles */
 body.dark-mode {
-  --background-color: #121212;
-  --text-color: #ffffff;
-  --link-color: #bb86fc;
+    background-color: #121212; /* Dark background */
+    color: white;  /* Light text color */
+}
+
+body.dark-mode a {
+    color: lightblue;  /* Light blue links in dark mode */
+}
+
+body.dark-mode #layout {
+    background-color: #333; /* Dark background for the layout */
+}
+
+body.dark-mode #header-container {
+    background-color: #222; /* Dark background for the header */
+}
+
+body.dark-mode #footer-container {
+    background-color: #222; /* Dark background for the footer */
+}
+
+/* Menu in dark mode */
+body.dark-mode #layout-menu {
+    background-color: #333; /* Dark menu background */
+    color: white; /* Light text color in the menu */
+}
+
+/* If you have specific sections that need styling, ensure dark mode styles are added here too */
+body.dark-mode #text-container, 
+body.dark-mode #text-img-container {
+    background-color: #1e1e1e; /* Dark background for content */
+    color: white; /* Light text */
 }
 
 /* Apply variables */
