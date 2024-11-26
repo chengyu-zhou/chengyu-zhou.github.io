@@ -569,7 +569,7 @@ div#layout-menu-container .closebtn:hover {
 :root {
   --background-color: white;
   --text-color: black;
-  --link-color: blue;
+  --link-color: #0366d6;
 }
 
 /* Dark mode */
