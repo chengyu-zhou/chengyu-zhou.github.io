@@ -137,13 +137,13 @@ pre, tt {
 }
 
 a, a > tt {
-	color: #0366d6;
+	color: #2c7ad3;
 	text-decoration: none;
 }
 
 a:hover, a:hover > tt{
 	/*border-bottom: 1.25px #0366d6 dashed;*/
-	color: #0366d6;
+	color: #14003a;
 	border-bottom: 1px gray solid;
 }
 
