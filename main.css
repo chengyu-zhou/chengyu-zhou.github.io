@@ -607,6 +607,31 @@ body.dark-mode #text-img-container {
     color: white; /* Light text */
 }
 
+/* Dark mode for h1, h2, h3 */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #66c7ff; /* Light gray text for headers */
+}
+
+/* Dark mode for menu text */
+body.dark-mode #layout-menu a {
+    color: #71b8f6; /* Light gray menu links */
+}
+
+body.dark-mode #layout-menu a:hover {
+    color: #ffffff; /* Pure white for hovered menu links */
+}
+
+body.dark-mode div.menu-category {
+    color: #ffffff; /* White category text in menu */
+}
+
+body.dark-mode div.menu-item {
+    color: #c0c0c0; /* Light gray text for menu items */
+}
+
+
 /* Apply variables */
 body {
   background-color: var(--background-color);
