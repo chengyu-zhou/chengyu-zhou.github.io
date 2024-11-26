@@ -144,10 +144,8 @@ a, a > tt {
 
 /* Hover effect for links */
 a:hover, a:hover > tt {
-  color: #ff4500; /* Change text color on hover */
-  text-decoration: underline; /* Apply underline on hover */
-  border-bottom: 1px solid #ff4500; /* Optional underline effect */
-  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition */
+  color: #14003a;
+  border-bottom: 1px gray solid;
 }
 
 
