@@ -623,6 +623,11 @@ body.dark-mode #layout-menu a:hover {
     color: #f0ebe7; /* Pure white for hovered menu links */
 }
 
+/* Dark mode link hover styles */
+body.dark-mode a:hover {
+    color: #f0ebe7; /* Example: Orange color for hovered links in dark mode */
+}
+
 body.dark-mode div.menu-category {
     color: #ffffff; /* White category text in menu */
 }
