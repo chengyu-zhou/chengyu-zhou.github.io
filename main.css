@@ -565,29 +565,107 @@ div#layout-menu-container .closebtn:hover {
 }
 
 
-/* Default light mode */
+/* Default CSS file for jemdoc */
+
+/* Define color variables for light and dark modes */
 :root {
-  --background-color: white;
-  --text-color: black;
-  --link-color: blue;
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --link-color: #0366d6;
+  --header-background: #14003a;
+  --menu-background: #ffffff;
+  --menu-border: #b8cde9;
+  --code-background: #f3f5f7;
+  --code-border: #d1d5da;
+  --table-even-row: #f6f8fa;
+  --footer-text: #c0c0c0;
 }
 
-/* Dark mode */
 body.dark-mode {
   --background-color: #121212;
-  --text-color: #ffffff;
+  --text-color: #e0e0e0;
   --link-color: #bb86fc;
+  --header-background: #1f1f1f;
+  --menu-background: #1a1a1a;
+  --menu-border: #333333;
+  --code-background: #2e2e2e;
+  --code-border: #444444;
+  --table-even-row: #1f1f1f;
+  --footer-text: #8c8c8c;
 }
 
-/* Apply variables */
+/* Apply the color variables */
 body {
   background-color: var(--background-color);
   color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+                Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+                Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+                "Segoe UI Symbol";
+  padding: 0;
+  margin: 0;
 }
 
 a {
   color: var(--link-color);
+  text-decoration: none;
 }
+
+a:hover {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+div#main-container {
+  min-height: 100vh;
+  background: var(--background-color);
+  margin: auto;
+}
+
+div#header {
+  background: var(--header-background);
+}
+
+div#layout-menu {
+  background: var(--menu-background);
+  border-right: 0.8px solid var(--menu-border);
+}
+
+div#layout-content-container {
+  background: var(--background-color);
+}
+
+pre, tt {
+  background: var(--code-background);
+  color: var(--text-color);
+  border: 1px solid var(--code-border);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid var(--code-border);
+}
+
+#countries tr:nth-child(even) {
+  background-color: var(--table-even-row);
+}
+
+div#footer {
+  color: var(--footer-text);
+}
+
+div#footer a {
+  color: var(--link-color);
+}
+
+div#footer a:hover {
+  color: var(--link-color);
+}
+
+/* Rest of the styling */
 
 
 /* Width to collapse sidebar */
