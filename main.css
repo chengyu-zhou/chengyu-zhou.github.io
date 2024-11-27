@@ -597,6 +597,10 @@ body.dark-mode #header-container {
     background-color: #313334; /* Dark background for the header */
 }
 
+body.dark-mode div#footer {
+    background-color: #313334; /* Dark footer background */
+}
+
 body.dark-mode #footer-container {
     background-color: #313334; /* Dark background for the footer */
 }
