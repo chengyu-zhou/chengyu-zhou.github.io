@@ -643,6 +643,19 @@ body.dark-mode div.menu-item {
     color: #c0c0c0; /* Light gray text for menu items */
 }
 
+
+#menu-toggle {
+    position: absolute;
+    left: 10px; /* Adjust this value to move it further left */
+    top: 15px;
+    padding: 10px;
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
 #darkModeButton {
     position: absolute;
     right: 20px;
