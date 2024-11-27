@@ -706,6 +706,21 @@ a {
 }
 
 
+@media (max-width: 768px) {
+    #menu-toggle {
+        position: absolute;
+        left: 10px; /* Adjust this value as needed */
+        top: 15px; /* Maintain alignment with the dark mode button */
+        z-index: 10; /* Ensure it stays above other elements */
+    }
+
+    #darkModeButton {
+        right: 10px; /* Reduce the space from the edge */
+        top: 15px; /* Keep it aligned */
+    }
+}
+
+
 /* Width to collapse sidebar */
 @media screen and (max-width: 768px) {
 	div#header-text-container {
