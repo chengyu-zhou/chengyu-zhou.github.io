@@ -717,7 +717,7 @@ a {
     #darkModeButton {
         position: absolute;
         right: 70px; /* Position it to the left of the menu-toggle button */
-        top: 20px; /* Slightly lower for different alignment */
+        top: 18px; /* Slightly lower for different alignment */
         z-index: 9; /* Just behind menu-toggle if needed */
     }
 }
