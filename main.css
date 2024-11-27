@@ -648,24 +648,31 @@ body.dark-mode div.menu-item {
     position: absolute;
     right: 20px;
     top: 15px;
-    padding: 10px 15px;
-    font-size: 14px;
+    padding: 12px 20px;
+    font-size: 16px;
     border: none;
-    border-radius: 5px;
-    background-color: #007bff;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 #darkModeButton:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .dark-mode #darkModeButton {
-    background-color: #444;
-    color: white;
+    background: linear-gradient(135deg, #333, #555);
+    color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+#darkModeButton i {
+    margin-right: 8px;
 }
 
 #header {
