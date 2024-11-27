@@ -12,7 +12,7 @@ body {
 
 div#main-container {
 	min-height: 100vh;
-	background: #ffffff;
+	background: var(--background-color);
 	margin: auto;
 }
 
@@ -595,6 +595,10 @@ body.dark-mode #layout-menu a.current:visited {
 
 body.dark-mode #header-container {
     background-color: #313334; /* Dark background for the header */
+}
+
+body.dark-mode div#main-container {
+    background-color: #313334; /* Same dark mode background */
 }
 
 body.dark-mode div#footer {
