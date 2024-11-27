@@ -17,40 +17,59 @@ MathJax.Hub.Config({
 });
 </script>
 <!-- End MathJax -->
+
 <script>
-function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    const isDarkMode = document.body.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
-}
-
-// Load the mode based on user preference and update the button icon
-document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById('darkModeButton');
-    
-    // Set initial icon based on saved preference
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        document.body.classList.add('dark-mode');
-        button.innerHTML = '<i class="fa fa-sun-o"></i>';
-    } else {
-        button.innerHTML = '<i class="fa fa-moon-o"></i>';
-    }
-
-    // Toggle dark mode and update the button icon on click
-    button.addEventListener('click', () => {
+    function toggleDarkMode() {
         document.body.classList.toggle('dark-mode');
         const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+    }
 
-        // Update icon
-        button.innerHTML = isDarkMode 
-            ? '<i class="fa fa-sun-o"></i>' 
+    document.addEventListener('DOMContentLoaded', () => {
+        // Check if the user has a preference stored in localStorage
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        } else if (localStorage.getItem('darkMode') === 'disabled') {
+            document.body.classList.remove('dark-mode');
+        } else {
+            // If no preference in localStorage, check the system's theme
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDarkMode) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+
+        const button = document.getElementById('darkModeButton');
+        button.innerHTML = document.body.classList.contains('dark-mode')
+            ? '<i class="fa fa-sun-o"></i>'
             : '<i class="fa fa-moon-o"></i>';
 
-        // Save the preference
-        localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        button.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            button.innerHTML = isDarkMode 
+                ? '<i class="fa fa-sun-o"></i>' 
+                : '<i class="fa fa-moon-o"></i>';
+
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        });
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('darkMode') === null) {
+                const prefersDarkMode = e.matches;
+                if (prefersDarkMode) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            }
+        });
     });
-});
 </script>
+
 </head>
 <body>
 
