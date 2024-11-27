@@ -686,7 +686,7 @@ a {
 
 
 /* Width to collapse sidebar */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
 	div#header-text-container {
 		visibility: hidden;
 		width: 0;
