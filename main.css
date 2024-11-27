@@ -586,6 +586,13 @@ body.dark-mode #layout {
     background-color: #313334; /* Dark background for the layout */
 }
 
+/* Dark mode: current menu item style */
+body.dark-mode #layout-menu a.current:link,
+body.dark-mode #layout-menu a.current:visited {
+    color: #f0ebe7; /* Bright yellow for the current menu item */
+    font-weight: bold;
+}
+
 body.dark-mode #header-container {
     background-color: #313334; /* Dark background for the header */
 }
