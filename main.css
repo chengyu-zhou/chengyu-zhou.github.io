@@ -643,41 +643,36 @@ body.dark-mode div.menu-item {
     color: #c0c0c0; /* Light gray text for menu items */
 }
 
-
 #darkModeButton {
     position: absolute;
     right: 20px;
     top: 15px;
-    padding: 12px 20px;
-    font-size: 16px;
+    padding: 0;  /* Remove padding */
+    font-size: 24px;  /* Adjust font size to make the icon larger */
     border: none;
-    border-radius: 30px;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    color: white;
+    background: none;  /* Remove background */
+    color: inherit;  /* Inherit color from parent */
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: none;  /* Remove box shadow */
+    transition: transform 0.2s ease;  /* Adjust transition */
 }
 
 #darkModeButton:hover {
-    background: linear-gradient(135deg, #feb47b, #ff7e5f);
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transform: scale(1.1);  /* Add a slight zoom effect on hover */
 }
 
 .dark-mode #darkModeButton {
-    background: linear-gradient(135deg, #333, #555);
-    color: #f0f0f0;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    color: #f0f0f0;  /* Light color when dark mode is enabled */
 }
 
 #darkModeButton i {
-    margin-right: 8px;
+    margin-right: 0;  /* Remove margin to the right of the icon */
 }
 
 #header {
     position: relative;
 }
+
 
 /* Apply variables */
 body {
