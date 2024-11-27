@@ -18,8 +18,56 @@ MathJax.Hub.Config({
 });
 </script>
 <!-- End MathJax -->
+
+<!-- Dark Mode Toggle Script -->
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('darkModeButton');
+
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+                button.innerHTML = '<i class="fa fa-sun-o"></i>';
+            } else {
+                button.innerHTML = '<i class="fa fa-moon-o"></i>';
+            }
+
+            button.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+
+                button.innerHTML = isDarkMode 
+                    ? '<i class="fa fa-sun-o"></i>' 
+                    : '<i class="fa fa-moon-o"></i>';
+
+                localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+            });
+        });
+    </script>
 </head>
 <body>
+    <div id="main-container">
+        <div id="header-container">
+            <div id="header">
+                <div id="header-icon-text-container">
+                    <div id="header-icon-container">
+                        <a href="index.html"><img src="./figures/yu2.jpeg" alt="" style="width: 110%; height: 110%;"></a>
+                    </div>
+                    <div id="header-text-container">
+                        <a href="index.html">Chengyu Zhou</a>
+                    </div>
+                </div>
+                <div id="main">
+                    <button class="openbtn" onclick="openNav()">☰</button>
+                </div>
+                <button id="darkModeButton"><i class="fa fa-moon-o"></i> Dark Mode</button>
+            </div>
+        </div>
 <div id="main-container">
 <div id="header-container">
 <div id="header">
