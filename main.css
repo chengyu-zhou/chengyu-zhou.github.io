@@ -100,9 +100,9 @@ div#layout-menu {
 
 
 div#layout-content-container {
-	width: calc(100vw - 200px);
+	width: calc(100vw - 160px);
 	min-height: calc(100vh - 70px);
-	margin-left: 180px;
+	margin-left: 150px;
 	background: none;
 	text-align: left;
 	display: inline-block;
