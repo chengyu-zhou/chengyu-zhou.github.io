@@ -7,8 +7,8 @@ body {
 				 "Segoe UI Symbol";
 	padding: 0;
 	margin: 0;
-	overflow-x: hidden; /* Prevent horizontal overflow */
 }
+
 
 div#main-container {
 	min-height: 100vh;
@@ -28,8 +28,6 @@ div#header {
 	z-index: 1;
 	position: fixed;
 	display:inline-block;
-	top: 0;
-	left: 0;
 }
 
 div#header-icon-text-container {
@@ -58,30 +56,38 @@ div#header-text-container {
 	padding-top: 8px;
 }
 
-div#header-text-container a {
+div#header-text-container a{
 	color: #ffffff;
 }
 
-div#header-text-container a:hover {
+div#header-text-container a:hover{
 	color: #ffffff;
 }
 
 div#layout {
-    flex: 1;
-    margin-top: 70px; /* Push content below fixed header */
-    padding: 20px; /* Adjusted padding to remove extra space */
-    background-color: var(--background-color);
+	width: 100vw;
+	min-height: calc(100vh - 70px);
+	padding-bottom: 0;
+	display: inline-block;
 }
 
-div#layout-menu-container {}
+div#layout-menu-container{
+	
+}
+
+
+
 
 div#layout-menu {
-	padding: 0; /* Remove extra padding */
-	height: calc(100% - 70px); /* Exclude header */
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 25px;
+	height: calc(100% - 97px);
 	min-width: 180px;
 	max-width: 200px;
-	position: relative;
-	overflow: hidden; /* Hide scrollbar for the layout menu */
+	position: fixed;
+	overflow: scroll;
 	background: #ffffff;
 	border-right: 0.8px solid #b8cde9;
 }
@@ -91,14 +97,15 @@ div#layout-menu {
 	line-height: 2;
 }
 
+
+
 div#layout-content-container {
-	width: calc(100vw - 240px);
+	width: calc(100vw - 260px);
 	min-height: calc(100vh - 70px);
-	margin-left: 200px;
+	margin-left: 220px;
 	background: none;
 	text-align: left;
 	display: inline-block;
-	overflow-y: auto; /* Enable scrollbar for main content */
 }
 
 div#layout-content{
@@ -108,7 +115,7 @@ div#layout-content{
 	padding-left: 35px;
 	padding-right: 35px;
 	min-width: 200px;
-	max-width: 925px;  /* Adjust this width to make content area wider */
+	max-width: 850px;
 	margin: auto;
 }
 
@@ -213,7 +220,7 @@ h1, h2, h3 {
 	padding-bottom: 0.2em;
 	line-height: 1.25;
 	padding-top: 0.5em;
-	border-bottom: 2px solid #b6b5bc;
+	border-bottom: 1.5px solid #b6b5bc;
 	font-weight: 500;
 }
 
@@ -225,7 +232,6 @@ h2 {
 	padding-top: 0.8em;
 	margin-bottom: 16px;
 	font-size: 24px;
-        border-bottom: 1.5px solid #b6b5bc; /* Updated border color for h2 */
 }
 
 h2 + h3 {
@@ -644,63 +650,6 @@ body.dark-mode div.menu-category {
 body.dark-mode div.menu-item {
     color: #c0c0c0; /* Light gray text for menu items */
 }
-
-
-/* Layout menu: Hide outer scrollbar and position correctly */
-#layout-menu {
-    position: relative;
-    overflow: hidden;
-}
-
-/* Scrollable content inside layout menu */
-#layout-menu-content {
-    overflow-y: auto; /* Enable scrolling */
-    height: 100%;
-    padding-right: 15px; /* Prevent clipping */
-    box-sizing: content-box;
-}
-
-/* Scrollbar styling for dark mode */
-body.dark-mode {
-    scrollbar-width: thin; /* For Firefox */
-    scrollbar-color: #444 #313334; /* Thumb and track colors */
-}
-
-body.dark-mode ::-webkit-scrollbar {
-    width: 8px;
-    opacity: 0; /* Hide initially */
-    transition: opacity 0.3s ease-in-out;
-}
-
-body.dark-mode ::-webkit-scrollbar-thumb {
-    background-color: #444;
-    border-radius: 4px;
-}
-
-body.dark-mode ::-webkit-scrollbar-track {
-    background-color: #313334;
-}
-
-/* Show scrollbar only on hover/scroll */
-#layout-menu-content:hover::-webkit-scrollbar {
-    opacity: 1; /* Show on hover */
-}
-
-body {
-    overflow-y: auto;
-    scroll-behavior: smooth;
-}
-
-/* Hide global scrollbar until scrolling */
-html {
-    -ms-overflow-style: none; /* For IE and Edge */
-    scrollbar-width: none; /* Firefox */
-}
-
-html::-webkit-scrollbar {
-    display: none; /* Hide scrollbar */
-}
-
 
 
 #menu-toggle {
