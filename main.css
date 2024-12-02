@@ -65,22 +65,16 @@ div#header-text-container a:hover{
 }
 
 div#layout {
-	width: 100vw;
-	min-height: calc(100vh - 70px);
-	padding-bottom: 0;
-	display: inline-block;
+    flex: 1;
+    margin-top: 70px; /* Push content below fixed header */
+    padding: 25px;
+    background-color: var(--background-color);
 }
 
 div#layout-menu-container{
 	
 }
 
-
-/* Layout menu container */
-#layout-menu {
-    position: relative;
-    overflow: hidden; /* Hide outer scrollbar */
-}
 
 div#layout-menu {
 	padding-left: 0px;
