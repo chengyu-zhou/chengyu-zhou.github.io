@@ -104,6 +104,7 @@ div#layout-content-container {
 	min-height: calc(100vh - 70px);
 	margin-left: 220px;
 	background: none;
+	overflow: auto; /* Scrollbars appear only when content overflows */
 	text-align: left;
 	display: inline-block;
 }
@@ -117,7 +118,46 @@ div#layout-content{
 	min-width: 200px;
 	max-width: 850px;
 	margin: auto;
+	overflow: auto; /* Scrollbars appear only when content overflows */
 }
+
+
+
+/* Default scrollbar styling for light mode */
+div#layout-content-container::-webkit-scrollbar {
+    width: 8px; /* Vertical scrollbar width */
+    height: 8px; /* Horizontal scrollbar height */
+}
+
+div#layout-content-container::-webkit-scrollbar-thumb {
+    background-color: #cccccc; /* Light mode thumb color */
+    border-radius: 4px; /* Rounded corners */
+}
+
+div#layout-content-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Light mode track color */
+}
+
+/* Dark mode scrollbar styling */
+body.dark-mode div#layout-content-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+body.dark-mode div#layout-content-container::-webkit-scrollbar-thumb {
+    background-color: #444444; /* Dark mode thumb color */
+    border-radius: 4px;
+}
+
+body.dark-mode div#layout-content-container::-webkit-scrollbar-thumb:hover {
+    background-color: #666666; /* Hover effect in dark mode */
+}
+
+body.dark-mode div#layout-content-container::-webkit-scrollbar-track {
+    background-color: #222222; /* Dark mode track color */
+}
+
+
 
 
 tt {
