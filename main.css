@@ -104,7 +104,7 @@ div#layout-content-container {
 	min-height: calc(100vh - 70px);
 	margin-left: 220px;
 	background: none;
-	overflow: auto; /* Scrollbars appear only when content overflows */
+    	overflow-x: hidden; /* Prevent unnecessary horizontal scrollbars */
 	text-align: left;
 	display: inline-block;
 }
@@ -118,7 +118,7 @@ div#layout-content{
 	min-width: 200px;
 	max-width: 850px;
 	margin: auto;
-	overflow: auto; /* Scrollbars appear only when content overflows */
+    	overflow-x: hidden; /* Prevent unnecessary horizontal scrollbars */
 }
 
 
