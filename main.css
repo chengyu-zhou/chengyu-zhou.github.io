@@ -7,6 +7,7 @@ body {
 				 "Segoe UI Symbol";
 	padding: 0;
 	margin: 0;
+	overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 
@@ -28,6 +29,8 @@ div#header {
 	z-index: 1;
 	position: fixed;
 	display:inline-block;
+	top: 0;
+	left: 0;
 }
 
 div#header-icon-text-container {
@@ -69,6 +72,7 @@ div#layout {
     margin-top: 70px; /* Push content below fixed header */
     padding: 25px;
     background-color: var(--background-color);
+    padding-top: 20px; /* Reduced padding to avoid extra space */
 }
 
 div#layout-menu-container{
