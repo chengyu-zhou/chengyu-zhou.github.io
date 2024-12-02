@@ -127,36 +127,36 @@ div#layout-content{
 
 /* Default scrollbar styling for light mode */
 div#layout-content-container::-webkit-scrollbar {
-    width: 8px; /* Vertical scrollbar width */
-    height: 8px; /* Horizontal scrollbar height */
+    width: 8px !important; /* Vertical scrollbar width */
+    height: 8px !important; /* Horizontal scrollbar height */
 }
 
 div#layout-content-container::-webkit-scrollbar-thumb {
-    background-color: #cccccc; /* Light mode thumb color */
-    border-radius: 4px; /* Rounded corners */
+    background-color: #cccccc !important; /* Light mode thumb color */
+    border-radius: 4px !important; /* Rounded corners */
 }
 
 div#layout-content-container::-webkit-scrollbar-track {
-    background-color: #f1f1f1; /* Light mode track color */
+    background-color: #f1f1f1 !important; /* Light mode track color */
 }
 
 /* Dark mode scrollbar styling */
 body.dark-mode div#layout-content-container::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 8px !important;
+    height: 8px !important;
 }
 
 body.dark-mode div#layout-content-container::-webkit-scrollbar-thumb {
-    background-color: #444444; /* Dark mode thumb color */
-    border-radius: 4px;
+    background-color: #444444 !important; /* Dark mode thumb color */
+    border-radius: 4px !important;
 }
 
 body.dark-mode div#layout-content-container::-webkit-scrollbar-thumb:hover {
-    background-color: #666666; /* Hover effect in dark mode */
+    background-color: #666666 !important; /* Hover effect in dark mode */
 }
 
 body.dark-mode div#layout-content-container::-webkit-scrollbar-track {
-    background-color: #222222; /* Dark mode track color */
+    background-color: #222222 !important; /* Dark mode track color */
 }
 
 
