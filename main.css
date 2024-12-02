@@ -101,7 +101,7 @@ div#layout-menu {
 
 html, body {
     overflow-x: hidden; /* Prevent horizontal scrolling */
-    overflow-y: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Prevent horizontal scrolling */
 }
 
 
