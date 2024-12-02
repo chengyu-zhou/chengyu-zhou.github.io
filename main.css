@@ -87,7 +87,7 @@ div#layout-menu {
 	min-width: 180px;
 	max-width: 200px;
 	position: fixed;
-	overflow: scroll;
+	overflow: hidden; /* Hide the scrollbar */
 	background: #ffffff;
 	border-right: 0.8px solid #b8cde9;
 }
