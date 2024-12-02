@@ -708,7 +708,7 @@ body.dark-mode div.menu-item {
 
 #darkModeButton {
     position: absolute;
-    right: 20px;
+    right: 25px;
     top: 25px;  /* Adjust top value to move the icon down */
     padding: 0;  /* Remove padding */
     font-size: 24px;  /* Adjust font size to make the icon larger */
