@@ -105,6 +105,7 @@ div#layout-content-container {
 	margin-left: 220px;
 	background: none;
     	overflow-x: hidden; /* Prevent unnecessary horizontal scrollbars */
+	overflow-y: auto; /* Allows vertical scrolling only */
 	text-align: left;
 	display: inline-block;
 }
@@ -116,9 +117,10 @@ div#layout-content{
 	padding-left: 35px;
 	padding-right: 35px;
 	min-width: 200px;
-	max-width: 850px;
+	max-width: 925px;
 	margin: auto;
     	overflow-x: hidden; /* Prevent unnecessary horizontal scrollbars */
+	overflow-y: auto; /* Allows vertical scrolling only */
 }
 
 
