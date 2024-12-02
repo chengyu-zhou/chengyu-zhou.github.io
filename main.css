@@ -653,6 +653,32 @@ body.dark-mode div.menu-item {
 }
 
 
+/* Remove scrollbar for layout menu */
+#layout-menu {
+    overflow: hidden; /* Hide scrollbar area */
+    position: relative;
+}
+
+/* Allow scrolling but hide scrollbar */
+#layout-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    pointer-events: none; /* Prevent blocking interaction */
+}
+
+/* Ensure scrollable content */
+#layout-menu-content {
+    overflow-y: scroll;
+    height: 100%;
+    padding-right: 15px; /* Add padding to prevent clipping */
+    box-sizing: content-box;
+}
+
 /* Scrollbar styling for dark mode */
 body.dark-mode {
     scrollbar-width: thin; /* For Firefox */
