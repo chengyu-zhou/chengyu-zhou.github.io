@@ -755,21 +755,19 @@ a {
 
 
 @media (max-width: 768px) {
+    #darkModeButton {
+        position: absolute;
+        left: 10px; /* Position it to the left of the menu-toggle button */
+        top: 10px; /* Slightly lower for different alignment */
+        z-index: 9; /* Just behind menu-toggle if needed */
+    }
+}
     #menu-toggle {
         position: absolute;
         right: 10px; /* Place it on the far left */
         top: 10px; /* Adjust vertical positioning */
-        z-index: 10; /* Keep it above other elements */
+        z-index: 9; /* Keep it above other elements */
     }
-
-    #darkModeButton {
-        position: absolute;
-        left: 10px; /* Position it to the left of the menu-toggle button */
-        top: 22px; /* Slightly lower for different alignment */
-        z-index: 9; /* Just behind menu-toggle if needed */
-    }
-}
-
 
 /* Width to collapse sidebar */
 @media screen and (max-width: 768px) {
