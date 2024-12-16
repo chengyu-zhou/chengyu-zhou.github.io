@@ -766,7 +766,7 @@ a {
 
     #darkModeButton {
     position: absolute;
-    right: 13px; /* Align to the far right */
+    right: 20px; /* Align to the far right */
     top: 21px; /* Adjust vertical alignment */
     z-index: 1000; /* Ensure it's clickable above other elements */
     background: none;
