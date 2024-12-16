@@ -757,7 +757,7 @@ a {
 @media (max-width: 768px) {
     #menu-toggle {
         position: absolute;
-        right: 10px; /* Place it on the far right */
+        left: 10px; /* Place it on the far right */
         top: 10px; /* Adjust vertical positioning */
         z-index: 10; /* Keep it above other elements */
     }
