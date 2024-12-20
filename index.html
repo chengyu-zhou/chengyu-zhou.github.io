@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="icon" href="./figures/yu2.jpeg">
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<title>Chengyu Zhou</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        } else if (localStorage.getItem('darkMode') === 'disabled') {
+            document.body.classList.remove('dark-mode');
+        } else {
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDarkMode) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+
+        const button = document.getElementById('darkModeButton');
+        button.innerHTML = document.body.classList.contains('dark-mode')
+            ? '<i class="fa fa-sun-o"></i>'
+            : '<i class="fa fa-moon-o"></i>';
+
+        button.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            button.innerHTML = isDarkMode 
+                ? '<i class="fa fa-sun-o"></i>' 
+                : '<i class="fa fa-moon-o"></i>';
+
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('darkMode') === null) {
+                const prefersDarkMode = e.matches;
+                if (prefersDarkMode) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            }
+        });
+    });
+</script>
+
+</head>
+<body>
+
+<div id="main-container">
+    <div id="header-container">
+        <div id="header">
+            <div id="header-icon-text-container">
+                <div id="header-text-container">
+                    <a href="index.html">Chengyu Zhou</a>
+                </div>
+                <div id="layout-menu">
+                    <a href="index.html" class="current">Home</a>
+                    <a href="research.html">Research</a>
+                    <a href="publication.html">Publications</a>
+                    <a href="awards.html">Awards</a>
+                </div>
+            </div>
+            <button id="darkModeButton"><i class="fa fa-moon-o"></i></button>
+        </div>
+    </div>
+    
+    <div id="layout">
+        <div id="layout-content-container">
+            <div id="layout-content">
+                <div id="text-img-container">
+                    <div id="img-container">  
+                        <a href="https://chengyu-zhou.github.io/">
+                            <script type="text/javascript">
+                                var images = ['"figures/profile2.jpg" width="225px" height="252px">'];
+                                start = '<img src=';
+                                function printImage() {
+                                    var rand_int = Math.floor(Math.random() * images.length);
+                                    document.write(start + images[rand_int]);
+                                }
+                            </script>
+                            <script type="text/javascript">
+                                printImage();
+                            </script>
+                        </a>&nbsp;
+                    </div>
+
+<div id="text-container"> 
+<p><h3>Chengyu Zhou</h3></p> 
+<td align="left"><p>Ph.D. Student (Sept. 2023-present)<br /> 
+<a href="https://che.northeastern.edu/">Department of Chemical Engineering</a> <br />
+<a href="https://www.northeastern.edu/">Northeastern University</a><br /></p>
+<p>Office: 259 CN Cullinane Hall, Northeastern University <br />
+Address: Boston, MA 02115-5005, United States <br />
+Email address: zhou.chengyu1@northeastern.edu <br /></p>
+<p><a href="https://scholar.google.com/citations?user=aig4SF8AAAAJ&hl=en">[Google Scholar]</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="files/CV.pdf">[Curriculum Vitae]</a> (Last update: Jan. 2023) <br /></p>
+</div>
+</div>
+
+<h2>About me</h2>
+<p>I am a first-year Ph.D. student at <a href="https://www.northeastern.edu/">Northeastern University</a>. My Ph.D. research concentrates on designing and applying computational tools based on electronic structure theory and machine learning to understand and design heterogeneous catalysts. 
+My current research focuses on designing catalysts for nitrogen reduction reaction (NRR).</p>  
+
+<h2>Education</h2>
+<ul>
+<li><p>Ph.D., Chemical Engineering, <a href="https://www.northeastern.edu/">Northeastern University</a>, United States, 2023-present (Advisor: <a href="https://coe.northeastern.edu/people/zhao-qing/">Prof. Qing Zhao</a>) </p></li>
+<li><p>M.S., Mechanical Engineering, <a href="https://www.kaust.edu.sa/en">KAUST</a>, Saudi Arabia, 2021-2023 (Advisor: <a href="https://www.kaust.edu.sa/en/study/faculty/aamir-farooq/">Prof. Aamir Farooq</a>) </p></li>
+<li><p>B.S., Energy and Power Engineering, <a href="https://en.dlut.edu.cn/">Dalian University of Technology</a> (DLUT), China, 2017-2021 (Advisor: <a href="http://faculty.dlut.edu.cn/jiaming/en/index.htm/">Prof. Ming Jia</a>)</p></li>
+</ul>
+
+<h2>News</h2>
+<ul>
+<li><p>Apr. 2024: Just finished all my first-year finals! Looking forward to summer research!</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+<script>
+function openNav() {}
+function closeNav() {}
+</script>
+
+</body>
+</html>
