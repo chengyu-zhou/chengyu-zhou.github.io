@@ -799,3 +799,11 @@ a {
         font-weight: normal; /* Adjust weight if necessary */
     }
 }
+
+/* Adjust link font size for smaller screens */
+@media screen and (max-width: 768px) {
+    div#layout-menu a {
+        font-size: 10px; /* Make the font size smaller */
+        padding: 5px 5px; /* Adjust padding for spacing */
+    }
+}
