@@ -746,200 +746,56 @@ a {
 }
 
 
-@media (max-width: 768px) {
-    #menu-toggle {
-    position: absolute;
-    left: 10px; /* Align to the far left */
-    top: 15px; /* Adjust vertical alignment */
-    z-index: 1000; /* Ensure it's clickable above other elements */
-    background: transparent;
-    border: none;
-}
-
-    #darkModeButton {
-    position: absolute;
-    right: 20px; /* Align to the far right */
-    top: 21px; /* Adjust vertical alignment */
-    z-index: 1000; /* Ensure it's clickable above other elements */
-    background: none;
-    border: none;
-}
-	
-/* Width to collapse sidebar */
+/* For smaller screens, add padding and place the image above the text */
 @media screen and (max-width: 768px) {
-	div#header-text-container {
-		visibility: hidden;
-		width: 0;
-	}
+    div#layout-content-container {
+        display: flex;
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align content */
+        padding: 20px; /* Add padding */
+    }
 
-	div#layout-menu-container{
-		width:0;
-	}
+    div#img-container {
+        display: flex; /* Use flex for alignment */
+        justify-content: center; /* Center the image horizontally */
+        text-align: center; /* Center-align text in the container */
+        margin-bottom: 15px; /* Add spacing below the image */
+        width: 100%; /* Ensure full width */
+    }
 
-	div#layout-menu {
-		padding-top: 20px;
-		transition: 0.5s;
-		min-width: 0px;
-		width: 0px;
-		box-shadow: 8px 0px 10px 0 rgba(0, 0, 0, 0.3);
-		border: none;
-		/*position: fixed;*/
-	}
-	div#layout-content-container {
-		transition: margin-left .5s;
-		margin-left:0px;
-		width: 100%;
-	}
-	div#main{
-		padding-left: calc(100vw - 150px);
-	}
+    div#img-container img {
+        max-width: 80%; /* Scale the image */
+        height: auto; /* Maintain aspect ratio */
+        margin: 0 auto; /* Center the image horizontally */
+        display: block; /* Block-level for consistent centering */
+    }
 
-	.openbtn {
-	  font-size: 26px;
-	  cursor: pointer;
-	  background: none;
-	  color: #ffffff;
-	  padding: 8px 9px 8px 9px;
-	  border: none;
-	  width:45px;
-	}
+    div#text-container {
+        width: 100%; /* Full width for the text */
+        text-align: left; /* Align text to the left */
+        margin-top: 0; /* Remove extra spacing */
+        padding: 0 10px; /* Add padding for readability */
+    }
 
-	.openbtn:hover {
-		background-color: #2f363d;
-	}
-
-	div#layout-menu-container .closebtn {
-	  position: absolute;
-	  top: 0;
-	  right: 25px;
-	  font-size: 36px;
-	  border: none;
-	  padding-left: 10px ;
-	  padding-right: 10px ;
-	  padding-top: 1.1px ;
-	  padding-bottom: 5.3px;
-	  line-height: 1;
-	  margin-right: -25px;
-	  background: #ffdce0;
-	  color: #959da5;
-	}
-
-	div#layout-menu-container .closebtn:hover {
-		background: #fdaeb7;
-		color: #cb2431;
-	}
+    div#text-container h1,
+    div#text-container h2,
+    div#text-container h3 {
+        text-align: center; /* Center headers */
+    }
 }
 
-/* Width to center image */
-@media screen and (max-width: 700px) {
-	img{
-		margin-right: 0px;
-	}
+/* Adjust title for smaller screens */
+@media screen and (max-width: 768px) {
+    div#header-text-container {
+        font-size: 0px; /* Hide the title */
+        margin-left: 0; /* Adjust margin if needed */
+        text-align: center;
+        flex: 1; /* Allow flexibility for alignment */
+        visibility: visible; /* Ensure it remains visible */
+    }
 
-	p{
-		text-align: left;
-	}
-
-	div#layout-content {
-		padding-left:   20px;
-		padding-right:  20px;
-		padding-top:    16px;
-		padding-bottom: 15px;
-		min-height: calc(100vh - 190px);
-	}
-
-	div#footer-container {
-	}
-
-	div#footer {
-		padding-left:   20px;
-		padding-right:  20px;
-		padding-top:    16px;
-		padding-bottom: 15px;
-	}
-
-	div#img-container {
-		float: none;
-		padding-top: 0px;
-		text-align: center;
-	}
-
-	div#text-container h1{
-		text-align: center;
-	}
-
-	div#text-container h2{
-		text-align: center;
-	}
-
-	div#text-container h3{
-		text-align: center;
-	}
-}
-
-
-
-
-/* members */
-div#member-container{
-	text-align: center;
-}
-div#member{
-	display: inline-block;
-	vertical-align: top;
-	width: 150px;
-	text-align: center;
-	margin-bottom: 15px;
-	margin-right: 10px;
-}
-
-div#member img{
-	width: 150px;
-	margin: 0px;
-	padding: 0px;
-}
-
-div#member p{
-	text-align: center;
-	margin: 0px;
-	padding: 0px;
-}
-
-
-/* Group Outings */
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
-
-.column {
-  -ms-flex: 23%; /* IE10 */
-  flex: 23%;
-  max-width: 23%;
-  padding: 0 4px;
-}
-
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
-}
-
-@media screen and (max-width: 800px) {
-  .column {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
-  }
+    div#header-text-container a {
+        font-size: 0px; /* Match smaller size */
+        font-weight: normal; /* Adjust weight if necessary */
+    }
 }
