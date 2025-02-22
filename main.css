@@ -606,6 +606,7 @@ div#layout-menu-container .closebtn:hover {
   --background-color: white;
   --text-color: black;
   --link-color: #0366d6;
+  --icon-color: #14003a;
 }
 
 /* Dark mode styles */
@@ -693,6 +694,21 @@ body.dark-mode div.menu-item {
     color: #c0c0c0; /* Light gray text for menu items */
 }
 
+/* Default icon colors */
+.social-icon {
+    font-size: 2.5em;
+    color: var(--icon-color); /* Default color */
+    transition: color 0.2s ease-in-out;
+}
+
+/* Dark mode icon styling */
+body.dark-mode .social-icon {
+    color: #ffffff; /* Change icons to white in dark mode */
+}
+
+body.dark-mode .social-icon:hover {
+    color: #FFA500; /* Highlight effect when hovered */
+}
 
 #menu-toggle {
     position: absolute;
