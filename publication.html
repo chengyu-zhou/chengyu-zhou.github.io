@@ -34,6 +34,11 @@ MathJax.Hub.Config({
     padding: 8px !important;
     visibility: visible !important;
     opacity: 1 !important;
+    transition: transform 0.3s ease;
+}
+
+#menu-toggle:active {
+    transform: scale(0.9);
 }
 
 @media screen and (max-width: 768px) {
@@ -43,6 +48,15 @@ MathJax.Hub.Config({
     
     #header-icon-text-container #layout-menu {
         display: none !important;
+    }
+    
+    #mobile-menu.show {
+        display: block !important;
+    }
+    
+    /* Ensure main content stays unchanged */
+    body.menu-open {
+        overflow: hidden;
     }
 }
 
@@ -115,8 +129,11 @@ MathJax.Hub.Config({
 
 /* Adjust the layout content container spacing */
 #layout-content-container {
-    margin-top: 0 !important; /* Remove top margin */
-    padding-top: 20px !important; /* Add smaller padding */
+    margin-top: 65px !important; /* Match the header height */
+    max-width: 925px; /* Match the main content width */
+    margin-left: auto; /* Center the content */
+    margin-right: auto; /* Center the content */
+    padding: 0; /* Remove any extra padding */
 }
 
 /* Adjust the main layout spacing */
@@ -152,7 +169,54 @@ MathJax.Hub.Config({
         right: 15px !important;
     }
     #layout-content {
-        padding: 20px 15px !important;
+        padding: 5px 15px !important;
+        margin-top: -65px !important; /* Add negative margin to reduce space above title */
+    }
+    
+    #layout-content-container {
+        margin-top: 65px !important; /* Keep this value to ensure proper spacing below header */
+    }
+    
+    /* Add padding for other elements to match research.html */
+    #toptitle {
+        margin: 0 !important;
+        padding: 0 15px !important; /* Add 15px left/right padding */
+    }
+
+    h1 {
+        margin: 0 !important;
+        padding: 0 15px !important; /* Add 15px left/right padding */
+    }
+    
+    /* Adjust paragraphs and lists for better mobile viewing */
+    p, ul, ol {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    /* Make h2 dividing lines have the same padding */
+    h2 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    /* Ensure any horizontal rules have same padding */
+    hr {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+        width: calc(100% - 30px) !important;
+    }
+    
+    /* Special handling for ordered list in publications */
+    ol {
+        margin-left: 15px !important;
+        padding-left: 15px !important;
+    }
+    
+    ol li {
+        margin-right: 15px !important;
     }
 }
 
@@ -182,8 +246,20 @@ div#layout {
     padding: 0 !important;
 }
 
-div#layout-content-container {
-    margin-top: 0 !important;
+/* Ensure header stays on top */
+div#header {
+    z-index: 1000 !important;
+}
+
+/* Prevent main content from changing */
+#layout-content {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+
+body.dark-mode #layout-content {
+    background-color: #313334; /* Dark background in dark mode */
 }
 
 /* Mobile menu styles */
@@ -198,6 +274,7 @@ div#layout-content-container {
     z-index: 9999;
     padding: 20px 0;
     text-align: center;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
 }
 
 .mobile-menu a {
@@ -209,32 +286,15 @@ div#layout-content-container {
     width: 100%;
     text-align: center;
     opacity: 1 !important;
+    transition: color 0.3s ease;
 }
 
 .mobile-menu a.current {
     color: #4a90e2 !important;
 }
 
-/* Prevent main content from changing */
-#layout-content {
-    position: relative;
-    z-index: 1;
-    background-color: white;
-}
-
-@media screen and (max-width: 768px) {
-    #mobile-menu.show {
-        display: block !important;
-    }
-    
-    .mobile-menu {
-        visibility: visible !important;
-    }
-    
-    /* Ensure main content stays unchanged */
-    body.menu-open {
-        overflow: hidden;
-    }
+.mobile-menu a:hover {
+    color: #FFA500 !important;
 }
 </style>
 
@@ -315,6 +375,14 @@ div#layout-content-container {
                 <a href="awards.html">Awards</a>
             </div>
         </div>
+        
+        <!-- Add this mobile menu structure right after the header -->
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="https://chengyu-zhou.github.io/">Home</a>
+            <a href="research.html">Research</a>
+            <a href="publication.html" class="current">Publications</a>
+            <a href="awards.html">Awards</a>
+        </div>
 
         <div id="layout">
             <div id="layout-content-container">
@@ -384,22 +452,36 @@ div#layout-content-container {
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+        // Menu toggle for sidebar
         const menuToggle = document.getElementById("menu-toggle");
         if (menuToggle) {
-            menuToggle.addEventListener("click", function() {
+            menuToggle.addEventListener("click", function(e) {
+                e.stopPropagation(); // Prevent click from bubbling
                 const menuContainer = document.getElementById("layout-menu-container");
-                if (menuContainer.classList.contains("active")) {
-                    closeNav();
-                } else {
-                    openNav();
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                // Toggle mobile menu
+                mobileMenu.classList.toggle('show');
+                document.body.classList.toggle('menu-open');
+                
+                // Toggle sidebar menu if needed
+                if (menuContainer) {
+                    if (menuContainer.classList.contains("active")) {
+                        closeNav();
+                    } else {
+                        openNav();
+                    }
                 }
             });
         }
         
+        // Close sidebar menu when clicking outside
         document.addEventListener("click", function(event) {
             const menuContainer = document.getElementById("layout-menu-container");
             const menuToggle = document.getElementById("menu-toggle");
+            const mobileMenu = document.getElementById('mobile-menu');
             
+            // Close sidebar if open and clicked outside
             if (menuContainer && menuToggle && 
                 menuContainer.classList.contains("active") && 
                 !menuContainer.contains(event.target) && 
@@ -407,33 +489,13 @@ div#layout-content-container {
                 !menuToggle.contains(event.target)) {
                 closeNav();
             }
-        });
-    });
-    </script>
-
-    <!-- Add this mobile menu structure right after the header -->
-    <div id="mobile-menu" class="mobile-menu">
-        <a href="https://chengyu-zhou.github.io/">Home</a>
-        <a href="research.html">Research</a>
-        <a href="publication.html" class="current">Publications</a>
-        <a href="awards.html">Awards</a>
-    </div>
-
-    <script>
-    // Make sure this script is at the end of the body tag
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('show');
-            document.body.classList.toggle('menu-open');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+            
+            // Close mobile menu if open and clicked outside
+            if (mobileMenu && menuToggle && 
+                mobileMenu.classList.contains('show') && 
+                !mobileMenu.contains(event.target) && 
+                event.target !== menuToggle &&
+                !menuToggle.contains(event.target)) {
                 mobileMenu.classList.remove('show');
                 document.body.classList.remove('menu-open');
             }

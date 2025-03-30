@@ -84,6 +84,11 @@ MathJax.Hub.Config({
     padding: 8px !important;
     visibility: visible !important;
     opacity: 1 !important;
+    transition: transform 0.3s ease; /* Add transition for click effect */
+}
+
+#menu-toggle:active {
+    transform: scale(0.9); /* Slight scale effect when clicked */
 }
 
 @media screen and (max-width: 768px) {
@@ -92,6 +97,27 @@ MathJax.Hub.Config({
     }
     
     #header-icon-text-container #layout-menu {
+        display: none !important;
+    }
+    
+    #mobile-menu.show {
+        display: block;
+    }
+    
+    /* Ensure main content stays unchanged */
+    body.menu-open {
+        overflow: hidden; /* Prevent scrolling when menu is open */
+    }
+    
+    #layout-content {
+        position: relative;
+        left: 0;
+        transition: none; /* Remove any transitions */
+    }
+}
+
+@media screen and (min-width: 769px) {
+    #mobile-menu {
         display: none !important;
     }
 }
@@ -176,6 +202,11 @@ MathJax.Hub.Config({
     }
 }
 
+/* Ensure header stays on top */
+div#header {
+    z-index: 1000 !important;
+}
+
 /* Mobile menu styles */
 .mobile-menu {
     display: none;
@@ -188,50 +219,64 @@ MathJax.Hub.Config({
     z-index: 1000;
     padding: 20px 0;
     text-align: center; /* Center the text */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2); /* Add shadow for better visibility */
+}
+
+/* Make all side menu links white by default */
+#layout-menu a, 
+#layout-menu-container #layout-menu a,
+.mobile-menu a {
+    color: white !important;
+    text-decoration: none;
+}
+
+/* Style for current/active page */
+#layout-menu a.current, 
+#layout-menu-container #layout-menu a.current,
+.mobile-menu a.current {
+    color: #4a90e2 !important;
+}
+
+/* Override the blue color for Home link in the top menu */
+#header-icon-text-container #layout-menu a[href="https://chengyu-zhou.github.io/"] {
+    color: white !important;
+}
+
+/* Hover effect for menu items */
+#layout-menu a:hover, 
+#layout-menu-container #layout-menu a:hover,
+.mobile-menu a:hover {
+    color: #FFA500 !important; /* Match the hover color used in desktop menu */
 }
 
 .mobile-menu a {
     display: block;
-    color: white;
-    text-decoration: none;
     padding: 15px 0;
     font-size: 18px;
     width: 100%;
     text-align: center; /* Center the text */
-}
-
-.mobile-menu a.current {
-    color: #4a90e2;
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
 }
 
 /* Prevent main content from changing */
 #layout-content {
     position: relative;
     z-index: 1;
-    background-color: white; /* Or whatever your content background color is */
+    background-color: white; /* Background color for light mode */
 }
 
-@media screen and (max-width: 768px) {
-    #mobile-menu.show {
-        display: block;
-    }
-    
-    /* Ensure main content stays unchanged */
-    body.menu-open {
-        overflow: hidden; /* Prevent scrolling when menu is open */
-    }
-    
-    #layout-content {
-        position: relative;
-        left: 0;
-        transition: none; /* Remove any transitions */
-    }
+body.dark-mode #layout-content {
+    background-color: #313334; /* Dark background in dark mode */
 }
 
-@media screen and (min-width: 769px) {
-    #mobile-menu {
-        display: none !important;
-    }
+div#layout-content-container {
+    margin-top: 65px !important; /* Match the header height */
+    max-width: 925px; /* Match the main content width */
+    margin-left: auto; /* Center the content */
+    margin-right: auto; /* Center the content */
+    padding: 0; /* Remove any extra padding */
+    background: none;
+    outline: none; /* Remove any debug highlights */
 }
 </style>
 
@@ -354,23 +399,36 @@ function closeNav() {
 
 // Add event listener for the menu toggle button
 document.addEventListener('DOMContentLoaded', function() {
+    // Menu toggle for sidebar
     const menuToggle = document.getElementById("menu-toggle");
     if (menuToggle) {
-        menuToggle.addEventListener("click", function() {
+        menuToggle.addEventListener("click", function(e) {
+            e.stopPropagation(); // Prevent click from bubbling
             const menuContainer = document.getElementById("layout-menu-container");
-            if (menuContainer.classList.contains("active")) {
-                closeNav();
-            } else {
-                openNav();
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Toggle mobile menu
+            mobileMenu.classList.toggle('show');
+            document.body.classList.toggle('menu-open');
+            
+            // Toggle sidebar menu if needed
+            if (menuContainer) {
+                if (menuContainer.classList.contains("active")) {
+                    closeNav();
+                } else {
+                    openNav();
+                }
             }
         });
     }
     
-    // Close menu when clicking outside
+    // Close sidebar menu when clicking outside
     document.addEventListener("click", function(event) {
         const menuContainer = document.getElementById("layout-menu-container");
         const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById('mobile-menu');
         
+        // Close sidebar if open and clicked outside
         if (menuContainer && menuToggle && 
             menuContainer.classList.contains("active") && 
             !menuContainer.contains(event.target) && 
@@ -378,25 +436,17 @@ document.addEventListener('DOMContentLoaded', function() {
             !menuToggle.contains(event.target)) {
             closeNav();
         }
+        
+        // Close mobile menu if open and clicked outside
+        if (mobileMenu && menuToggle && 
+            mobileMenu.classList.contains('show') && 
+            !mobileMenu.contains(event.target) && 
+            event.target !== menuToggle &&
+            !menuToggle.contains(event.target)) {
+            mobileMenu.classList.remove('show');
+            document.body.classList.remove('menu-open');
+        }
     });
-});
-
-document.getElementById('menu-toggle').addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent click from bubbling
-    var mobileMenu = document.getElementById('mobile-menu');
-    mobileMenu.classList.toggle('show');
-    document.body.classList.toggle('menu-open');
-});
-
-// Close menu when clicking outside
-document.addEventListener('click', function(event) {
-    var mobileMenu = document.getElementById('mobile-menu');
-    var menuToggle = document.getElementById('menu-toggle');
-    
-    if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-        mobileMenu.classList.remove('show');
-        document.body.classList.remove('menu-open');
-    }
 });
 </script>
 

@@ -34,6 +34,11 @@ MathJax.Hub.Config({
     padding: 8px !important;
     visibility: visible !important;
     opacity: 1 !important;
+    transition: transform 0.3s ease; /* Add transition for click effect */
+}
+
+#menu-toggle:active {
+    transform: scale(0.9); /* Slight scale effect when clicked */
 }
 
 @media screen and (max-width: 768px) {
@@ -109,6 +114,11 @@ MathJax.Hub.Config({
     gap: 5px !important; /* Same small gap as awards.html */
 }
 
+/* Set Home link to white in header for larger screens */
+#layout-menu a[href="https://chengyu-zhou.github.io/"] {
+    color: white !important;
+}
+
 /* Larger screen adjustments */
 @media screen and (min-width: 769px) {
     #darkModeButton {
@@ -130,18 +140,39 @@ MathJax.Hub.Config({
 /* Mobile layout adjustments */
 @media screen and (max-width: 768px) {
     #layout-content {
-        padding: -17px 0 0 0 !important; /* Changed from -15px to -17px */
+        padding: -17px 15px 0 15px !important; /* Added 15px padding to left and right */
         margin-top: -17px !important; /* Changed from -15px to -17px */
     }
 
     #toptitle {
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 0 15px !important; /* Added 15px left padding */
     }
 
     h1 {
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 0 15px !important; /* Added 15px left padding */
+    }
+    
+    /* Adjust paragraphs and lists for better mobile viewing */
+    p, ul, ol {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    /* Make h2 dividing lines have the same padding */
+    h2 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    /* Ensure any horizontal rules have same padding */
+    hr {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+        width: calc(100% - 30px) !important;
     }
 }
 
@@ -157,6 +188,7 @@ MathJax.Hub.Config({
     z-index: 9999; /* Increased z-index to ensure menu appears above content */
     padding: 20px 0;
     text-align: center;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2); /* Add shadow for better visibility */
 }
 
 .mobile-menu a {
@@ -168,10 +200,15 @@ MathJax.Hub.Config({
     width: 100%;
     text-align: center;
     opacity: 1 !important; /* Ensure links are visible */
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .mobile-menu a.current {
     color: #4a90e2 !important;
+}
+
+.mobile-menu a:hover {
+    color: #FFA500 !important; /* Match the hover color used in desktop menu */
 }
 
 /* Prevent main content from changing */
@@ -182,6 +219,91 @@ MathJax.Hub.Config({
 }
 
 @media screen and (max-width: 768px) {
+    #mobile-menu.show {
+        display: block !important; /* Force display when shown */
+    }
+    
+    .mobile-menu {
+        visibility: visible !important; /* Ensure menu is visible */
+    }
+    
+    /* Ensure main content stays unchanged */
+    body.menu-open {
+        overflow: hidden;
+    }
+}
+
+/* Ensure header stays on top */
+div#header {
+    z-index: 1000 !important;
+}
+
+body.dark-mode #layout-content {
+    background-color: #313334; /* Dark background in dark mode */
+}
+
+div#layout-content-container {
+    margin-top: 65px !important; /* Match the header height */
+    max-width: 925px; /* Match the main content width */
+    margin-left: auto; /* Center the content */
+    margin-right: auto; /* Center the content */
+    padding: 0; /* Remove any extra padding */
+}
+
+/* Update content spacing */
+#layout-content {
+    padding: 0 0 0 0 !important; /* Reset padding */
+    margin-top: -25px !important; /* Use negative margin instead of negative padding */
+}
+
+#toptitle {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Desktop and mobile alignment of headings and text */
+h1, h2, p, ul, ol {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important; 
+    margin-right: 0 !important;
+}
+
+h1 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Large screen specific adjustments */
+@media screen and (min-width: 769px) {
+    h1, h2, p, ul, ol {
+        padding-left: 0 !important; /* Remove left padding for alignment */
+        padding-right: 0 !important; /* Remove right padding for alignment */
+    }
+    
+    #layout-content {
+        padding: 0 !important; /* Reset any default padding */
+    }
+    
+    /* Override the h2 rule specifically for large screens */
+    h2 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* Add consistent padding to h2 headings for mobile screens only */
+@media screen and (max-width: 768px) {
+    h2 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
     #mobile-menu.show {
         display: block !important; /* Force display when shown */
     }
@@ -312,22 +434,36 @@ elucidate the fundamental chemistry in lithium-mediated NRR and single atom allo
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+        // Menu toggle for sidebar
         const menuToggle = document.getElementById("menu-toggle");
         if (menuToggle) {
-            menuToggle.addEventListener("click", function() {
+            menuToggle.addEventListener("click", function(e) {
+                e.stopPropagation(); // Prevent click from bubbling
                 const menuContainer = document.getElementById("layout-menu-container");
-                if (menuContainer.classList.contains("active")) {
-                    closeNav();
-                } else {
-                    openNav();
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                // Toggle mobile menu
+                mobileMenu.classList.toggle('show');
+                document.body.classList.toggle('menu-open');
+                
+                // Toggle sidebar menu if needed
+                if (menuContainer) {
+                    if (menuContainer.classList.contains("active")) {
+                        closeNav();
+                    } else {
+                        openNav();
+                    }
                 }
             });
         }
         
+        // Close sidebar menu when clicking outside
         document.addEventListener("click", function(event) {
             const menuContainer = document.getElementById("layout-menu-container");
             const menuToggle = document.getElementById("menu-toggle");
+            const mobileMenu = document.getElementById('mobile-menu');
             
+            // Close sidebar if open and clicked outside
             if (menuContainer && menuToggle && 
                 menuContainer.classList.contains("active") && 
                 !menuContainer.contains(event.target) && 
@@ -335,22 +471,13 @@ elucidate the fundamental chemistry in lithium-mediated NRR and single atom allo
                 !menuToggle.contains(event.target)) {
                 closeNav();
             }
-        });
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('show');
-            document.body.classList.toggle('menu-open');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+            
+            // Close mobile menu if open and clicked outside
+            if (mobileMenu && menuToggle && 
+                mobileMenu.classList.contains('show') && 
+                !mobileMenu.contains(event.target) && 
+                event.target !== menuToggle &&
+                !menuToggle.contains(event.target)) {
                 mobileMenu.classList.remove('show');
                 document.body.classList.remove('menu-open');
             }

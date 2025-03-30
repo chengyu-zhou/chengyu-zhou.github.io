@@ -125,8 +125,11 @@ div#layout {
 
 /* Adjust content container spacing */
 div#layout-content-container {
-    margin-top: 0 !important;
-    padding-top: 20px !important;
+    margin-top: 65px !important;
+    max-width: 925px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
 }
 
 /* Ensure title has proper spacing */
@@ -225,28 +228,35 @@ div#toptitle {
 
 /* Menu toggle button styles */
 #menu-toggle {
-    display: none; /* Hidden by default on desktop */
-    position: absolute;
-    left: 15px;
-    top: 15px;
-    z-index: 9999;
-    color: white;
-    font-size: 24px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
+    display: none !important;
+    position: absolute !important;
+    left: 15px !important;
+    top: 12px !important;
+    z-index: 1000 !important;
+    color: white !important;
+    font-size: 28px !important;
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: transform 0.3s ease; /* Add transition for click effect */
+}
+
+#menu-toggle:active {
+    transform: scale(0.9); /* Slight scale effect when clicked */
 }
 
 @media screen and (max-width: 768px) {
     #menu-toggle {
-        display: block; /* Show on mobile */
-        position: absolute;
-        left: 15px;
-        top: 15px;
-        z-index: 9999;
+        display: block !important;
     }
-
+    
+    #header-icon-text-container #layout-menu {
+        display: none !important;
+    }
+    
     #mobile-menu.show {
         display: block !important;
     }
@@ -255,6 +265,7 @@ div#toptitle {
         visibility: visible !important;
     }
     
+    /* Ensure main content stays unchanged */
     body.menu-open {
         overflow: hidden;
     }
@@ -264,7 +275,7 @@ div#toptitle {
     width: 100vw;
     height: 65px;
     background: #14003a;
-    z-index: 1;
+    z-index: 1000 !important;
     position: fixed;
     display: flex;
     justify-content: center;
@@ -276,70 +287,39 @@ div#toptitle {
 .mobile-menu {
     display: none;
     position: fixed;
-    top: 0; /* Changed from 60px to 0 to cover full height */
-    left: -250px; /* Start off-screen */
+    top: 60px;
+    left: 0;
     width: 250px;
     height: 100vh;
     background-color: #14003a;
     z-index: 9999;
-    padding: 60px 0 20px 0; /* Added top padding for close button */
+    padding: 20px 0;
     text-align: center;
-    transition: left 0.3s ease; /* Smooth transition */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2); /* Add shadow for better visibility */
 }
 
 .mobile-menu a {
-    display: block !important;
+    display: block;
     color: white !important;
-    text-decoration: none !important;
-    padding: 15px 0 !important;
-    font-size: 18px !important;
-    width: 100% !important;
-    text-align: center !important;
+    text-decoration: none;
+    padding: 15px 0;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
     opacity: 1 !important;
-    visibility: visible !important;
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .mobile-menu a.current {
     color: #4a90e2 !important;
 }
 
-.mobile-menu.show {
-    left: 0; /* Slide in from left */
-    display: block;
+.mobile-menu a:hover {
+    color: #FFA500 !important; /* Match the hover color used in desktop menu */
 }
 
-@media screen and (max-width: 768px) {
-    #menu-toggle {
-        display: block !important;
-    }
-    
-    .mobile-menu.show {
-        display: block;
-    }
-    
-    /* Hide hamburger menu when side menu is open */
-    body.menu-open #menu-toggle {
-        display: none !important;
-    }
-}
-
-/* Style for close button */
-.close-menu {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 5px;
-    display: none; /* Hidden by default */
-}
-
-/* Show close button when menu is active */
-.mobile-menu.show .close-menu {
-    display: block;
+body.dark-mode #layout-content {
+    background-color: #313334; /* Dark background in dark mode */
 }
 </style>
 
@@ -366,9 +346,6 @@ div#toptitle {
             </div>
         </div>
         <div class="mobile-menu" id="mobile-menu">
-            <button class="close-menu" aria-label="Close Menu">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
             <a href="https://chengyu-zhou.github.io/">Home</a>
             <a href="research.html">Research</a>
             <a href="publication.html">Publications</a>
@@ -390,37 +367,62 @@ div#toptitle {
         Powered by <a href="https://github.com/szl2/jemdoc-new-design" target="blank">jemdoc + new design</a>.
     </div>
 <script>
+function openNav() {
+    document.getElementById("layout-menu-container").classList.add("active");
+}
+
+function closeNav() {
+    document.getElementById("layout-menu-container").classList.remove("active");
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeButton = document.querySelector('.close-menu');
-
-    // Toggle menu open
-    menuToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        mobileMenu.classList.add('show');
-        document.body.classList.add('menu-open');
-    });
-
-    // Close menu with X button
-    closeButton.addEventListener('click', function(e) {
-        e.stopPropagation();
-        mobileMenu.classList.remove('show');
-        document.body.classList.remove('menu-open');
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!mobileMenu.contains(event.target) && 
+    // Menu toggle for sidebar
+    const menuToggle = document.getElementById("menu-toggle");
+    if (menuToggle) {
+        menuToggle.addEventListener("click", function(e) {
+            e.stopPropagation(); // Prevent click from bubbling
+            const menuContainer = document.getElementById("layout-menu-container");
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Toggle mobile menu
+            mobileMenu.classList.toggle('show');
+            document.body.classList.toggle('menu-open');
+            
+            // Toggle sidebar menu if needed
+            if (menuContainer) {
+                if (menuContainer.classList.contains("active")) {
+                    closeNav();
+                } else {
+                    openNav();
+                }
+            }
+        });
+    }
+    
+    // Close sidebar menu when clicking outside
+    document.addEventListener("click", function(event) {
+        const menuContainer = document.getElementById("layout-menu-container");
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Close sidebar if open and clicked outside
+        if (menuContainer && menuToggle && 
+            menuContainer.classList.contains("active") && 
+            !menuContainer.contains(event.target) && 
+            event.target !== menuToggle &&
+            !menuToggle.contains(event.target)) {
+            closeNav();
+        }
+        
+        // Close mobile menu if open and clicked outside
+        if (mobileMenu && menuToggle && 
+            mobileMenu.classList.contains('show') && 
+            !mobileMenu.contains(event.target) && 
+            event.target !== menuToggle &&
             !menuToggle.contains(event.target)) {
             mobileMenu.classList.remove('show');
             document.body.classList.remove('menu-open');
         }
-    });
-
-    // Prevent clicks inside menu from closing it
-    mobileMenu.addEventListener('click', function(e) {
-        e.stopPropagation();
     });
 });
 </script>
