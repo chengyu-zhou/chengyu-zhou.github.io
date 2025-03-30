@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="icon" href="./figures/yu2.jpeg">
 <link rel="stylesheet" href="main.css" type="text/css" />
-<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <title>Chengyu Zhou</title>
 <!-- MathJax -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
@@ -42,16 +42,17 @@ MathJax.Hub.Config({
         }
 
         const button = document.getElementById('darkModeButton');
-        button.innerHTML = document.body.classList.contains('dark-mode')
-            ? '<i class="fa fa-sun-o"></i>'
-            : '<i class="fa fa-moon-o"></i>';
+        button.innerHTML = document.body.classList.contains('dark-mode') 
+            ? '<i class="fa-solid fa-sun"></i>' 
+            : '<i class="fa-solid fa-moon"></i>';
 
         button.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             const isDarkMode = document.body.classList.contains('dark-mode');
+            
             button.innerHTML = isDarkMode 
-                ? '<i class="fa fa-sun-o"></i>' 
-                : '<i class="fa fa-moon-o"></i>';
+                ? '<i class="fa-solid fa-sun"></i>' 
+                : '<i class="fa-solid fa-moon"></i>';
 
             localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
         });
@@ -69,11 +70,287 @@ MathJax.Hub.Config({
     });
 </script>
 
+<style>
+/* Simplify the layout structure */
+div#main-container {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+div#header-container {
+    width: 100%;
+    height: 65px;
+}
+
+div#layout-content {
+    padding: 40px 0 0 0 !important;
+    max-width: 925px;
+    margin: 0 auto;
+}
+
+div#toptitle {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+h1 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Reset the spacing for the main container */
+div#main-container {
+    min-height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Adjust header container height */
+div#header-container {
+    width: 100%;
+    height: 65px;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Remove extra space in layout */
+div#layout {
+    width: 100vw;
+    min-height: calc(100vh - 65px);
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block;
+}
+
+/* Adjust content container spacing */
+div#layout-content-container {
+    margin-top: 0 !important;
+    padding-top: 20px !important;
+}
+
+/* Ensure title has proper spacing */
+div#toptitle {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Adjust for larger screens */
+@media screen and (min-width: 769px) {
+    div#layout-content-container {
+        margin-top: 0 !important;
+        padding-top: 20px !important;
+    }
+}
+
+/* Update header container width to match content width */
+#header-icon-text-container {
+    max-width: 925px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* Update layout menu to include dark mode button */
+#layout-menu {
+    display: flex;
+    align-items: center;
+    gap: 5px !important;
+}
+
+/* Position dark mode button */
+#darkModeButton {
+    position: absolute !important;
+    right: 15px !important;
+    top: 12px !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    z-index: 1000 !important;
+}
+
+/* Larger screen adjustment */
+@media screen and (min-width: 769px) {
+    #darkModeButton {
+        right: calc((100vw - 925px) / 2 - 10px) !important; /* Changed from -20px to -10px to move left */
+    }
+}
+
+/* Mobile layout adjustments */
+@media screen and (max-width: 768px) {
+    #layout-content {
+        padding: -17px 15px 0 15px !important; /* Added 15px padding to left and right */
+        margin-top: 3px !important;
+    }
+
+    #toptitle {
+        margin: 0 !important;
+        padding: 0 15px !important;
+    }
+
+    h1 {
+        margin: 0 !important;
+        padding: 0  15px !important;
+    }
+
+    .content-container {
+        padding: 0 15px !important;
+    }
+
+    /* Adjust list items padding if needed */
+    ul {
+        padding-left: 30 px !important; /* Ensure list items are aligned properly */
+        padding-right: 15px !important;
+    }
+
+
+    #darkModeButton {
+        right: 5px !important; /* Increased from 15px to 20px to move right */
+        top: 12px !important; /* Keep the same top position */
+    }
+    #layout-menu {
+        display: none !important;
+    }
+}
+
+/* Menu toggle button styles */
+#menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    z-index: 9999;
+    color: white;
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    #menu-toggle {
+        display: block; /* Show on mobile */
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        z-index: 9999;
+    }
+
+    #mobile-menu.show {
+        display: block !important;
+    }
+    
+    .mobile-menu {
+        visibility: visible !important;
+    }
+    
+    body.menu-open {
+        overflow: hidden;
+    }
+}
+
+#header {
+    width: 100vw;
+    height: 65px;
+    background: #14003a;
+    z-index: 1;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; /* Changed from 60px to 0 to cover full height */
+    left: -250px; /* Start off-screen */
+    width: 250px;
+    height: 100vh;
+    background-color: #14003a;
+    z-index: 9999;
+    padding: 60px 0 20px 0; /* Added top padding for close button */
+    text-align: center;
+    transition: left 0.3s ease; /* Smooth transition */
+}
+
+.mobile-menu a {
+    display: block !important;
+    color: white !important;
+    text-decoration: none !important;
+    padding: 15px 0 !important;
+    font-size: 18px !important;
+    width: 100% !important;
+    text-align: center !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.mobile-menu a.current {
+    color: #4a90e2 !important;
+}
+
+.mobile-menu.show {
+    left: 0; /* Slide in from left */
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+    #menu-toggle {
+        display: block !important;
+    }
+    
+    .mobile-menu.show {
+        display: block;
+    }
+    
+    /* Hide hamburger menu when side menu is open */
+    body.menu-open #menu-toggle {
+        display: none !important;
+    }
+}
+
+/* Style for close button */
+.close-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+    display: none; /* Hidden by default */
+}
+
+/* Show close button when menu is active */
+.mobile-menu.show .close-menu {
+    display: block;
+}
+</style>
+
 </head>
 <body>
     <div id="main-container">
         <div id="header-container">
             <div id="header">
+                <button id="menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
                 <div id="header-icon-text-container">
                     <div id="header-text-container">
                         <a href="https://chengyu-zhou.github.io/">Chengyu Zhou</a>
@@ -85,31 +362,67 @@ MathJax.Hub.Config({
                         <a href="awards.html" class="current">Awards</a>
                     </div>
                 </div>
-                <button id="darkModeButton"><i class="fa fa-moon-o"></i></button>
+                <button id="darkModeButton"><i class="fa-solid fa-moon"></i></button>
             </div>
         </div>
-        <div id="layout">
-            <div id="layout-content-container">
-                <div id="layout-content">
-                    <div id="toptitle">
-                        <h1>Selected Honors and Awards</h1>
-                    </div>
-                    <ul>
-                        <li><p>Best Poster Award, New England Catalysis Symposium (<a href="https://che.northeastern.edu/news/che-phd-student-wins-best-poster-award-at-necs/" target="_blank">News</a>), 2025</p></li>
-                        <li><p>Full Master Fellowship, KAUST, 2021-2023</p></li>
-                        <li><p>Outstanding Undergraduate (4/185), DLUT, 2017-2018</p></li>
-                        <li><p>Research Innovation Award (1/185), DLUT, 2017-2018</p></li>
-                    </ul>
-                </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <button class="close-menu" aria-label="Close Menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <a href="https://chengyu-zhou.github.io/">Home</a>
+            <a href="research.html">Research</a>
+            <a href="publication.html">Publications</a>
+            <a href="awards.html" class="current">Awards</a>
+        </div>
+        <div id="layout-content">
+            <div id="toptitle">
+                <h1>Selected Honors and Awards</h1>
             </div>
+            <ul>
+                <li><p>Best Poster Award, New England Catalysis Symposium (<a href="https://che.northeastern.edu/news/che-phd-student-wins-best-poster-award-at-necs/" target="_blank">News</a>), 2025</p></li>
+                <li><p>Full Master Fellowship, KAUST, 2021-2023</p></li>
+                <li><p>Outstanding Undergraduate (4/185), DLUT, 2017-2018</p></li>
+                <li><p>Research Innovation Award (1/185), DLUT, 2017-2018</p></li>
+            </ul>
         </div>
     </div>
     <div id="footer" style="text-align: left; margin-top: 20px; font-size: 0.8em; color: #666; max-width: 580px; margin-left: auto; margin-right: auto;">
         Powered by <a href="https://github.com/szl2/jemdoc-new-design" target="blank">jemdoc + new design</a>.
     </div>
 <script>
-function openNav() {}
-function closeNav() {}
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeButton = document.querySelector('.close-menu');
+
+    // Toggle menu open
+    menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        mobileMenu.classList.add('show');
+        document.body.classList.add('menu-open');
+    });
+
+    // Close menu with X button
+    closeButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        mobileMenu.classList.remove('show');
+        document.body.classList.remove('menu-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!mobileMenu.contains(event.target) && 
+            !menuToggle.contains(event.target)) {
+            mobileMenu.classList.remove('show');
+            document.body.classList.remove('menu-open');
+        }
+    });
+
+    // Prevent clicks inside menu from closing it
+    mobileMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});
 </script>
 </body>
 </html>

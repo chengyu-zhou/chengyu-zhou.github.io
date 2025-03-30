@@ -697,8 +697,13 @@ body.dark-mode div.menu-item {
 /* Default icon colors */
 .social-icon {
     font-size: 2.5em;
-    color: var(--icon-color); /* Default color */
+    color: var(--icon-color);
     transition: color 0.2s ease-in-out;
+}
+
+/* Specific styling for LinkedIn icon if needed */
+.fa-brands.fa-linkedin {
+    color: #14003a; /* Your preferred color */
 }
 
 /* Dark mode icon styling */
@@ -711,44 +716,59 @@ body.dark-mode .social-icon:hover {
 }
 
 #menu-toggle {
+    display: none; /* Hidden by default on larger screens */
     position: absolute;
-    left: 10px; /* Adjust this value to move it further left */
+    left: 15px;
     top: 15px;
     padding: 10px;
-    font-size: 18px;
+    font-size: 24px;
     background-color: transparent;
     border: none;
+    color: white;
     cursor: pointer;
+    z-index: 2;
 }
 
 
+/* Completely remove circle around dark mode button */
 #darkModeButton {
-    margin-left: -30px; /* Space between the 'Awards' link and the button */
-    position: relative; /* Ensure it stays within the same line */
-    font-size: 24px;  /* Adjust font size to make the icon larger */
-    border: none;
-    background: none;  /* Remove background */
-    color: inherit;  /* Inherit color from parent */
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    box-shadow: none;  /* Remove box shadow */
-    transition: transform 0.2s ease;  /* Adjust transition */
+    z-index: 1000;
+    padding: 0;
 }
 
+/* Make the icon itself stand alone with no wrapping elements */
 #darkModeButton i {
-    margin-right: 0;  /* Remove margin to the right of the icon */
-    color: white;  /* Set the icon color to white */
+    color: white;
+    font-size: 20px;
 }
 
-#darkModeButton:hover {
-    transform: scale(1.1);  /* Add a slight zoom effect on hover */
+/* Check HTML structure - if the button is nested in another element with border */
+#header #darkModeButton,
+div > #darkModeButton,
+#header-container #darkModeButton {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
 }
 
-.dark-mode #darkModeButton {
-    color: #f0f0f0;  /* Light color when dark mode is enabled */
-}
-
-#header {
-    position: relative;
+/* Target any potential wrapper that might have the border */
+#darkModeButton * {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 /* Apply variables */
@@ -822,4 +842,288 @@ a {
         font-size: 8x; /* Make the font size smaller */
         padding: 5px 3px; /* Adjust padding for spacing */
     }
+}
+
+/* Mobile Menu Styles */
+@media screen and (max-width: 768px) {
+    #menu-toggle {
+        display: block !important; /* Force display */
+        position: absolute !important;
+        left: 15px !important;
+        top: 12px !important; /* Positioned as requested */
+        z-index: 1000 !important; /* Ensure it's above other elements */
+        color: white !important;
+        font-size: 28px !important;
+        background-color: transparent !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 8px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Add a more specific selector to ensure this rule isn't overridden */
+    body #main-container #header-container #header #menu-toggle {
+        display: block !important;
+    }
+    
+    /* Make the hamburger icon explicitly visible if using Font Awesome */
+    #menu-toggle i.fa-bars {
+        display: inline-block !important;
+        color: white !important;
+    }
+    
+    #layout-menu-container {
+        position: fixed;
+        top: 0;
+        left: -250px; /* Off-screen by default */
+        width: 250px;
+        height: 100%;
+        background: #14003a;
+        transition: 0.3s;
+        z-index: 999;
+        overflow-y: auto;
+        padding-top: 60px;
+    }
+    
+    #layout-menu-container.active {
+        left: 0; /* Slide in when active */
+    }
+    
+    #layout-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .closebtn {
+        display: block !important;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px !important;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+/* Mobile menu toggle functions
+function openNav() {
+    document.getElementById("layout-menu-container").classList.add("active");
+}
+
+function closeNav() {
+    document.getElementById("layout-menu-container").classList.remove("active");
+}
+
+// Event listener for the toggle button
+document.getElementById("menu-toggle").addEventListener("click", function() {
+    const menuContainer = document.getElementById("layout-menu-container");
+    if (menuContainer.classList.contains("active")) {
+        closeNav();
+    } else {
+        openNav();
+    }
+});
+
+// Close menu when clicking outside
+document.addEventListener("click", function(event) {
+    const menuContainer = document.getElementById("layout-menu-container");
+    const menuToggle = document.getElementById("menu-toggle");
+    
+    if (menuContainer.classList.contains("active") && 
+        !menuContainer.contains(event.target) && 
+        event.target !== menuToggle) {
+        closeNav();
+    }
+});
+
+/* Hide the header menu links on mobile screens */
+@media screen and (max-width: 768px) {
+    #header-icon-text-container #layout-menu {
+        display: none !important; /* Force hide the menu links in the header */
+    }
+    
+    /* Make header text container take less space */
+    #header-text-container {
+        flex: 0 1 auto; /* Allow shrinking */
+    }
+    
+    /* Adjust the header container spacing */
+    #header-icon-text-container {
+        justify-content: center; /* Center the header text */
+    }
+    
+    /* Ensure the dark mode button is positioned correctly */
+    #darkModeButton {
+        position: absolute;
+        right: 15px;
+    }
+}
+
+/* Additional mobile improvements */
+@media screen and (max-width: 768px) {
+    /* Add padding for the toggle button */
+    #header-icon-text-container {
+        padding-left: 40px; /* Make room for the toggle button */
+    }
+    
+    /* Make the toggle button more visible */
+    #menu-toggle {
+        color: white;
+        font-size: 28px; /* Larger icon */
+    }
+    
+    /* Make sure site title is visible on mobile */
+    #header-text-container a {
+        font-size: 24px !important; /* Override any previous mobile styling */
+        visibility: visible !important;
+    }
+}
+
+/* Fix mobile sidebar menu styling */
+@media screen and (max-width: 768px) {
+    /* Existing mobile menu styles */
+    
+    /* Center align the menu items in the sidebar */
+    #layout-menu-container #layout-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center horizontally */
+        justify-content: flex-start; /* Start from the top */
+        gap: 20px; /* More space between items */
+        padding: 15px;
+        left: 0; /* Reset the left position that's affecting the text */
+        position: static; /* Remove relative positioning */
+    }
+    
+    /* Fix the font display for menu items */
+    #layout-menu-container #layout-menu a {
+        font-size: 22px; /* Larger font size for better visibility */
+        text-align: center;
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        margin: 0;
+    }
+    
+    /* Style the close button */
+    .closebtn {
+        display: block !important;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 30px !important; /* Make it larger */
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    
+    /* Fix the menu container padding */
+    #layout-menu-container {
+        padding-top: 80px; /* More space at the top for the close button */
+    }
+}
+
+/* Center the header text between toggle and dark mode buttons */
+@media screen and (max-width: 768px) {
+    /* Position the header container */
+    #header {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+    }
+    
+    /* Make the header text visible and centered */
+    #header-text-container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 24px !important;
+        visibility: visible !important;
+        width: auto;
+        z-index: 1;
+    }
+    
+    /* Ensure the text is visible */
+    #header-text-container a {
+        font-size: 24px !important;
+        visibility: visible !important;
+        display: block;
+        color: white;
+    }
+    
+    /* Adjust toggle button position */
+    #menu-toggle {
+        position: relative;
+        left: 0;
+        margin-right: auto;
+    }
+    
+    /* Adjust dark mode button position */
+    #darkModeButton {
+        position: relative;
+        right: 0;
+        margin-left: auto;
+    }
+    
+    /* Hide the icon-text-container's default styling */
+    #header-icon-text-container {
+        width: 100%;
+        justify-content: center;
+        padding: 0;
+    }
+}
+
+/* Update any existing LinkedIn-specific styles */
+.fa-linkedin, 
+.fa-brands.fa-linkedin,
+i[class*="linkedin"] {
+    /* Your desired styling */
+    color: #14003a;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+/* Dark mode button styling for larger screens */
+@media screen and (min-width: 769px) {
+    #darkModeButton {
+        right: calc((100vw - 925px) / 2 - 10px) !important;
+        width: 24px !important; /* Match awards.html size */
+        height: 24px !important; /* Match awards.html size */
+    }
+
+    #darkModeButton i {
+        font-size: 24px !important; /* Match awards.html icon size */
+    }
+}
+
+/* Base dark mode button styles */
+#darkModeButton {
+    position: absolute !important;
+    right: 15px !important;
+    top: 12px !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 1000 !important;
+}
+
+#darkModeButton i {
+    color: white !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    border: none !important;
+    outline: none !important;
 }

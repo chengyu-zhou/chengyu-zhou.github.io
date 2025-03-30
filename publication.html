@@ -5,27 +5,241 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link rel="icon" href="./figures/yu.png">
+<link rel="icon" href="./figures/yu2.jpeg">
 <link rel="stylesheet" href="main.css" type="text/css" />
-<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <title>Chengyu Zhou</title>
+
 <!-- MathJax -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
 </script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
-	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
 });
 </script>
-<!-- End MathJax -->
 
-<script>
-    function toggleDarkMode() {
-        document.body.classList.toggle('dark-mode');
-        const isDarkMode = document.body.classList.contains('dark-mode');
-        localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+<style>
+#menu-toggle {
+    display: none !important;
+    position: absolute !important;
+    left: 15px !important;
+    top: 12px !important;
+    z-index: 1000 !important;
+    color: white !important;
+    font-size: 28px !important;
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+@media screen and (max-width: 768px) {
+    #menu-toggle {
+        display: block !important;
     }
+    
+    #header-icon-text-container #layout-menu {
+        display: none !important;
+    }
+}
 
+#darkModeButton {
+    position: absolute !important;
+    right: 15px !important;
+    top: 22px !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 1000 !important;
+}
+
+#darkModeButton i {
+    color: white !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+#layout-menu-container {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #14003a;
+    transition: 0.3s;
+    z-index: 999;
+    overflow-y: auto;
+    padding-top: 60px;
+}
+
+#layout-menu-container.active {
+    left: 0;
+}
+
+.closebtn {
+    display: block !important;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px !important;
+    color: white;
+    cursor: pointer;
+}
+
+#header-icon-text-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+#layout-menu {
+    display: flex;
+    align-items: center;
+    gap: 5px !important;
+}
+
+/* Adjust the layout content container spacing */
+#layout-content-container {
+    margin-top: 0 !important; /* Remove top margin */
+    padding-top: 20px !important; /* Add smaller padding */
+}
+
+/* Adjust the main layout spacing */
+#layout {
+    padding-top: 0 !important; /* Remove padding */
+    margin-top: 0 !important; /* Remove margin */
+}
+
+/* Ensure the title spacing is consistent */
+#toptitle {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Adjust spacing for larger screens */
+@media screen and (min-width: 769px) {
+    #layout-content-container {
+        margin-top: 0 !important;
+        padding-top: 20px !important;
+    }
+    #darkModeButton {
+        right: calc((100vw - 925px) / 2) !important;
+        top: 22px !important;
+    }
+}
+
+/* Keep mobile layout unchanged */
+@media screen and (max-width: 768px) {
+    #layout-menu {
+        display: none !important;
+    }
+    #darkModeButton {
+        right: 15px !important;
+    }
+    #layout-content {
+        padding: 20px 15px !important;
+    }
+}
+
+/* Update content spacing */
+#layout-content {
+    padding: 20px 0 0 0 !important; /* Reduced from 30px to 20px */
+}
+
+#toptitle {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+h1 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Remove any extra spacing from containers */
+div#main-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div#layout {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div#layout-content-container {
+    margin-top: 0 !important;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #14003a;
+    z-index: 9999;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.mobile-menu a {
+    display: block;
+    color: white !important;
+    text-decoration: none;
+    padding: 15px 0;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    opacity: 1 !important;
+}
+
+.mobile-menu a.current {
+    color: #4a90e2 !important;
+}
+
+/* Prevent main content from changing */
+#layout-content {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+
+@media screen and (max-width: 768px) {
+    #mobile-menu.show {
+        display: block !important;
+    }
+    
+    .mobile-menu {
+        visibility: visible !important;
+    }
+    
+    /* Ensure main content stays unchanged */
+    body.menu-open {
+        overflow: hidden;
+    }
+}
+</style>
+
+<!-- Dark Mode Toggle Script -->
+<script>
     document.addEventListener('DOMContentLoaded', () => {
         if (localStorage.getItem('darkMode') === 'enabled') {
             document.body.classList.add('dark-mode');
@@ -41,16 +255,17 @@ MathJax.Hub.Config({
         }
 
         const button = document.getElementById('darkModeButton');
-        button.innerHTML = document.body.classList.contains('dark-mode')
-            ? '<i class="fa fa-sun-o"></i>'
-            : '<i class="fa fa-moon-o"></i>';
+        button.innerHTML = document.body.classList.contains('dark-mode') 
+            ? '<i class="fa-solid fa-sun"></i>' 
+            : '<i class="fa-solid fa-moon"></i>';
 
         button.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             const isDarkMode = document.body.classList.contains('dark-mode');
+            
             button.innerHTML = isDarkMode 
-                ? '<i class="fa fa-sun-o"></i>' 
-                : '<i class="fa fa-moon-o"></i>';
+                ? '<i class="fa-solid fa-sun"></i>' 
+                : '<i class="fa-solid fa-moon"></i>';
 
             localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
         });
@@ -68,10 +283,14 @@ MathJax.Hub.Config({
     });
 </script>
 </head>
+
 <body>
     <div id="main-container">
         <div id="header-container">
             <div id="header">
+                <button id="menu-toggle" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
                 <div id="header-icon-text-container">
                     <div id="header-text-container">
                         <a href="https://chengyu-zhou.github.io/">Chengyu Zhou</a>
@@ -83,9 +302,20 @@ MathJax.Hub.Config({
                         <a href="awards.html">Awards</a>
                     </div>
                 </div>
-                <button id="darkModeButton"><i class="fa fa-moon-o"></i></button>
+                <button id="darkModeButton"><i class="fa-solid fa-moon"></i></button>
             </div>
         </div>
+
+        <div id="layout-menu-container">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div id="layout-menu">
+                <a href="https://chengyu-zhou.github.io/">Home</a>
+                <a href="research.html">Research</a>
+                <a href="publication.html" class="current">Publications</a>
+                <a href="awards.html">Awards</a>
+            </div>
+        </div>
+
         <div id="layout">
             <div id="layout-content-container">
                 <div id="layout-content">
@@ -138,14 +368,77 @@ MathJax.Hub.Config({
                           <p>Yachao Chang, Ming Jia, Bo Niu, Maozhao Xie, <b><u>Chengyu Zhou</u></b></p>
                           <p><i>Energy and Fuels,</i> <b>2019</b>, <i>33</i>, 9289-9301</p>
                         </li>
-                      </ol>
+                    </ol>
                 </div>
             </div>
         </div>
     </div>
-<script>
-function openNav() {}
-function closeNav() {}
-</script>
+
+    <script>
+    function openNav() {
+        document.getElementById("layout-menu-container").classList.add("active");
+    }
+
+    function closeNav() {
+        document.getElementById("layout-menu-container").classList.remove("active");
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById("menu-toggle");
+        if (menuToggle) {
+            menuToggle.addEventListener("click", function() {
+                const menuContainer = document.getElementById("layout-menu-container");
+                if (menuContainer.classList.contains("active")) {
+                    closeNav();
+                } else {
+                    openNav();
+                }
+            });
+        }
+        
+        document.addEventListener("click", function(event) {
+            const menuContainer = document.getElementById("layout-menu-container");
+            const menuToggle = document.getElementById("menu-toggle");
+            
+            if (menuContainer && menuToggle && 
+                menuContainer.classList.contains("active") && 
+                !menuContainer.contains(event.target) && 
+                event.target !== menuToggle &&
+                !menuToggle.contains(event.target)) {
+                closeNav();
+            }
+        });
+    });
+    </script>
+
+    <!-- Add this mobile menu structure right after the header -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="https://chengyu-zhou.github.io/">Home</a>
+        <a href="research.html">Research</a>
+        <a href="publication.html" class="current">Publications</a>
+        <a href="awards.html">Awards</a>
+    </div>
+
+    <script>
+    // Make sure this script is at the end of the body tag
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('show');
+            document.body.classList.toggle('menu-open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                mobileMenu.classList.remove('show');
+                document.body.classList.remove('menu-open');
+            }
+        });
+    });
+    </script>
 </body>
 </html>
