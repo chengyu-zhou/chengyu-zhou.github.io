@@ -311,7 +311,7 @@ div#toptitle {
 }
 
 .mobile-menu a.current {
-    color: #4a90e2 !important;
+    color: #FFA500 !important;
 }
 
 .mobile-menu a:hover {
@@ -320,6 +320,17 @@ div#toptitle {
 
 body.dark-mode #layout-content {
     background-color: #313334; /* Dark background in dark mode */
+}
+
+/* Style for current/active page on larger screens */
+@media screen and (min-width: 769px) {
+    #header-icon-text-container #layout-menu a.current {
+        color: #FFA500 !important;
+    }
+}
+
+#layout-menu-container #layout-menu a.current {
+    color: #FFA500 !important;
 }
 </style>
 

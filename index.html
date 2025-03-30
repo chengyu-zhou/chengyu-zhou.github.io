@@ -234,11 +234,18 @@ div#header {
 #layout-menu a.current, 
 #layout-menu-container #layout-menu a.current,
 .mobile-menu a.current {
-    color: #4a90e2 !important;
+    color: #FFA500 !important;
 }
 
-/* Override the blue color for Home link in the top menu */
-#header-icon-text-container #layout-menu a[href="https://chengyu-zhou.github.io/"] {
+/* Style for current/active page on larger screens */
+@media screen and (min-width: 769px) {
+    #header-icon-text-container #layout-menu a.current {
+        color: #FFA500 !important;
+    }
+}
+
+/* Override the blue color for Home link in the top menu - but not when it's the current page */
+#header-icon-text-container #layout-menu a[href="https://chengyu-zhou.github.io/"]:not(.current) {
     color: white !important;
 }
 

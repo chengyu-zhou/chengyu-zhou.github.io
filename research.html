@@ -119,6 +119,13 @@ MathJax.Hub.Config({
     color: white !important;
 }
 
+/* Style for current/active page on larger screens */
+@media screen and (min-width: 769px) {
+    #header-icon-text-container #layout-menu a.current {
+        color: #FFA500 !important;
+    }
+}
+
 /* Larger screen adjustments */
 @media screen and (min-width: 769px) {
     #darkModeButton {
@@ -204,7 +211,7 @@ MathJax.Hub.Config({
 }
 
 .mobile-menu a.current {
-    color: #4a90e2 !important;
+    color: #FFA500 !important;
 }
 
 .mobile-menu a:hover {
@@ -316,6 +323,10 @@ h1 {
     body.menu-open {
         overflow: hidden;
     }
+}
+
+#layout-menu-container #layout-menu a.current {
+    color: #FFA500 !important;
 }
 </style>
 
