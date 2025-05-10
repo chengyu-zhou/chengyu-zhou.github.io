@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+  "http://www.w3.org/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <title>Chengyu Zhou</title>
 
-<!-- MathJax -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
 </script>
 <script type="text/x-mathjax-config">
@@ -20,6 +19,7 @@ MathJax.Hub.Config({
 </script>
 
 <style>
+/* Existing styles remain the same */
 #menu-toggle {
     display: none !important;
     position: absolute !important;
@@ -45,15 +45,15 @@ MathJax.Hub.Config({
     #menu-toggle {
         display: block !important;
     }
-    
+
     #header-icon-text-container #layout-menu {
         display: none !important;
     }
-    
+
     #mobile-menu.show {
         display: block !important;
     }
-    
+
     /* Ensure main content stays unchanged */
     body.menu-open {
         overflow: hidden;
@@ -175,11 +175,11 @@ MathJax.Hub.Config({
         padding: 5px 15px !important;
         margin-top: -65px !important; /* Add negative margin to reduce space above title */
     }
-    
+
     #layout-content-container {
         margin-top: 65px !important; /* Keep this value to ensure proper spacing below header */
     }
-    
+
     /* Add padding for other elements to match research.html */
     #toptitle {
         margin: 0 !important;
@@ -190,13 +190,13 @@ MathJax.Hub.Config({
         margin: 0 !important;
         padding: 0 15px !important; /* Add 15px left/right padding */
     }
-    
+
     /* Adjust paragraphs and lists for better mobile viewing */
     p, ul, ol {
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
-    
+
     /* Make h2 dividing lines have the same padding */
     h2 {
         padding-left: 15px !important;
@@ -204,20 +204,20 @@ MathJax.Hub.Config({
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
-    
+
     /* Ensure any horizontal rules have same padding */
     hr {
         margin-left: 15px !important;
         margin-right: 15px !important;
         width: calc(100% - 30px) !important;
     }
-    
+
     /* Special handling for ordered list in publications */
     ol {
         margin-left: 15px !important;
         padding-left: 15px !important;
     }
-    
+
     ol li {
         margin-right: 15px !important;
     }
@@ -303,11 +303,57 @@ body.dark-mode #layout-content {
 .mobile-menu a:hover {
     color: #FFA500 !important;
 }
+
+/* Styles for the abstract button and container */
+.publication-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.abstract-button {
+    background-color: #FFA500; /* Orange color */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.abstract-button:hover {
+    background-color: #FF8C00; /* Darker orange on hover */
+}
+
+.abstract-content {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    white-space: pre-line; /* Preserve line breaks */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark mode styles for abstract content */
+body.dark-mode .abstract-content {
+    background-color: #444;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+.abstract-content.hidden {
+    display: none;
+}
 </style>
 
-<!-- Dark Mode Toggle Script -->
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // Dark mode initialization
         if (localStorage.getItem('darkMode') === 'enabled') {
             document.body.classList.add('dark-mode');
         } else if (localStorage.getItem('darkMode') === 'disabled') {
@@ -322,16 +368,16 @@ body.dark-mode #layout-content {
         }
 
         const button = document.getElementById('darkModeButton');
-        button.innerHTML = document.body.classList.contains('dark-mode') 
-            ? '<i class="fa-solid fa-sun"></i>' 
+        button.innerHTML = document.body.classList.contains('dark-mode')
+            ? '<i class="fa-solid fa-sun"></i>'
             : '<i class="fa-solid fa-moon"></i>';
 
         button.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             const isDarkMode = document.body.classList.contains('dark-mode');
-            
-            button.innerHTML = isDarkMode 
-                ? '<i class="fa-solid fa-sun"></i>' 
+
+            button.innerHTML = isDarkMode
+                ? '<i class="fa-solid fa-sun"></i>'
                 : '<i class="fa-solid fa-moon"></i>';
 
             localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
@@ -347,7 +393,55 @@ body.dark-mode #layout-content {
                 }
             }
         });
+
+        // ===== AUTO ID GENERATION FOR ABSTRACTS =====
+        // Find all publication list items
+        const publicationItems = document.querySelectorAll('ol li');
+        
+        // Process each publication item
+        publicationItems.forEach((item, index) => {
+            // Find the abstract button and abstract content div within this publication item
+            const abstractButton = item.querySelector('.abstract-button');
+            const abstractContent = item.querySelector('.abstract-content');
+            
+            if (abstractButton && abstractContent) {
+                // Generate unique ID based on the position in the list
+                const uniqueId = `abstract${publicationItems.length - index}`;
+                
+                // Update or add the button's data attribute
+                abstractButton.setAttribute('data-abstract-id', uniqueId);
+                
+                // Update or add the abstract content's ID
+                abstractContent.id = uniqueId;
+                
+                // Make sure the abstract content has the hidden class
+                if (!abstractContent.classList.contains('hidden')) {
+                    abstractContent.classList.add('hidden');
+                }
+                
+                // Add click event listener directly to this button
+                abstractButton.addEventListener('click', function() {
+                    const contentId = this.getAttribute('data-abstract-id');
+                    const content = document.getElementById(contentId);
+                    if (content) {
+                        content.classList.toggle('hidden');
+                    }
+                });
+            }
+        });
     });
+
+    // Function to toggle mobile menu
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('show');
+        document.body.classList.toggle('menu-open');
+    }
+
+    // Function to close side nav
+    function closeNav() {
+        document.getElementById('layout-menu-container').classList.remove('active');
+    }
 </script>
 </head>
 
@@ -382,8 +476,7 @@ body.dark-mode #layout-content {
                 <a href="awards.html">Awards</a>
             </div>
         </div>
-        
-        <!-- Add this mobile menu structure right after the header -->
+
         <div id="mobile-menu" class="mobile-menu">
             <a href="https://chengyu-zhou.github.io/">Home</a>
             <a href="research.html">Research</a>
@@ -392,122 +485,95 @@ body.dark-mode #layout-content {
         </div>
 
         <div id="layout">
-            <div id="layout-content-container">
-                <div id="layout-content">
-                    <div id="toptitle">
-                        <h1>Publications</h1>
-                    </div>
-                    <ol reversed style="list-style-position: outside; text-align: left;">
-                        <li>
-                            <p>
-                              <a href="https://doi.org/10.1038/s41586-022-03819-2">
-                                Towards the Computational Design of Single Atom Alloys for Methane to Ethylene Conversion
-                              </a>
-                            </p>
+        <div id="layout-content-container">
+        <div id="layout-content">
+        <div id="toptitle">
+        <h1>Publications</h1>
+        </div>
+        <ol reversed style="list-style-position: outside; text-align: left;">
+        
+
+        <li>
+        <p>                 <a href="https://doi.org/10.1016/j.jcat.2025.116194">
+                            Towards the Computational Design of Single Atom Alloys for Methane to Ethylene Conversion
+        </a></p>
                             <p><b><u>Chengyu Zhou</u></b>, Qing Zhao</p>
-                            <p><i>Submitted</i></p>
-                          </li>
-                        <li>
-                            <p>
-                              <a href="https://doi.org/10.1002/cphc.202401097">
-                                Revealing Mechanisms of Lithium-Mediated Nitrogen Reduction Reaction from First-Principles Simulations
-                              </a>
-                            </p>
+                            <p><i>Journal of Catalysis,</i> <b>2025</b>, <i>448</i>, 116194</p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">Direct conversion of methane to value-added chemicals has been a longstanding challenge in leveraging abundant natural gas resources due to unfavorable C–H bond activation and coke formation. We recently evaluated stability and reactivity of single atom alloys (SAAs) formed by atomically doping 3d-5d transition metals on Cu(111) as catalysts for direct methane conversion to C2 hydrocarbons using density functional theory calculations. Here, to further develop catalyst design principles for this chemistry, we systematically evaluate kinetics of methane dehydrogenation and C–C coupling steps on ten promising Cu(111)-based SAAs and unearth descriptors that correlate with catalyst activity and selectivity. Our results show that ethylene formation is kinetically favored over ethane formation across all SAAs studied. Notably, catalytic activity of SAAs highly correlates with their selectivity for direct methane conversion to C2 products, highlighting the synergy between dopant and host metal in enhancing methane activation and preference towards C–C coupling. In addition, we identify C2H4 adsorption energy as an effective descriptor that guides the SAA reactivity for methane activation to ethylene. Combining all analyses, we discover that iridium dispersed on copper (Ir/Cu) SAA stands out as a highly active and selective catalyst for methane to ethylene conversion. These findings pave the way for high-throughput screening of a vast SAA chemical space for the chemistry of methane transformation.
+                            </div>
+        </li>
+        
+
+
+        <li>
+        <p>                 <a href="https://doi.org/10.1002/cphc.202401097">
+                            Revealing Mechanisms of Lithium-Mediated Nitrogen Reduction Reaction from First-Principles Simulations
+        </a></p>
                             <p><b><u>Chengyu Zhou</u></b>, Qing Zhao</p>
-                            <p><i>ChemPhysChem,</i> <b>2025</b>, <i>e202401097</i></p>
-                          </li>
-                        <li>
-                          <p>
-                            <a href="https://doi.org/10.1016/j.combustflame.2023.113289">
-                              Allylic-alkylic C-C Bond Decomposition in 1-Butene and 1-Pentene
-                            </a>
-                          </p>
-                          <p><b><u>Chengyu Zhou</u></b>, Dapeng Liu, Aamir Farooq</p>
-                          <p><i>Combustion and Flame,</i> <b>2024</b>, <i>261</i>, 113289</p>
-                        </li>
-                        <li>
-                          <p>
-                            <a href="https://pubs.acs.org/doi/10.1021/acs.energyfuels.0c03086">
-                              Construction of a Skeletal Oxidation Mechanism for 2,5-Dimethylfuran Using Decoupling Methodology and Reaction Class-Based Global Sensitivity Analysis
-                            </a>
-                          </p>
-                          <p><b><u>Chengyu Zhou</u></b>, Yachao Chang, Pengzhi Wang, Bo Niu, and Ming Jia</p>
-                          <p><i>Energy and Fuels,</i> <b>2020</b>, <i>34</i>, 16654-16665</p>
-                        </li>
-                        <li>
-                          <p>
-                            <a href="https://pubs.acs.org/doi/10.1021/acs.energyfuels.9b02249">
-                              Reduction of Detailed Chemical Mechanisms Using Reaction Class-Based Global Sensitivity and Path Sensitivity Analyses
-                            </a>
-                          </p>
-                          <p>Yachao Chang, Ming Jia, Bo Niu, Maozhao Xie, <b><u>Chengyu Zhou</u></b></p>
-                          <p><i>Energy and Fuels,</i> <b>2019</b>, <i>33</i>, 9289-9301</p>
-                        </li>
-                    </ol>
-                </div>
-            </div>
+                            <p><i>ChemPhysChem,</i> <b>2025</b>, <i>e202401097</i> <b>(Cover art)</b></p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">Recently, lithium-mediated nitrogen reduction reaction (Li-NRR) in nonaqueous electrolytes has proven to be an environmentally friendly and feasible route for ammonia electrosynthesis, revealing tremendous economic and social advantages over the industrial Haber-Bosch process which consumes enormous fossil fuels and generates massive carbon dioxide emissions, and direct electrocatalytic nitrogen reduction reaction (NRR) which suffers from sluggish kinetics and poor faradaic efficiencies. However, reaction mechanisms of Li-NRR and the role of solid electrolyte interface (SEI) layer in activating N2 remain unclear, impeding its further development. Here, using electronic structure theory, we discover a nitridation-coupled reduction mechanism and a nitrogen cycling reduction mechanism on lithium and lithium nitride surfaces, respectively, which are major components of SEI in experimental characterization. Our work reveals divergent pathways in Li-NRR from conventional direct electrocatalytic NRR, highlights the role of surface reconstruction in improving reactivity, and sheds light on further enhancing efficiency of ammonia electrosynthesis.
+                            </div>
+        </li>
+        
+
+
+        <li>
+        <p>                 <a href="https://doi.org/10.1016/j.combustflame.2023.113289">
+                            Allylic-alkylic C-C Bond Decomposition in 1-Butene and 1-Pentene
+        </a></p>
+                            <p><b><u>Chengyu Zhou</u></b>, Dapeng Liu, Aamir Farooq</p>
+                            <p><i>Combustion and Flame,</i> <b>2024</b>, <i>261</i>, 113289</p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">1-Butene and 1-pentene are critical intermediates in the oxidation and pyrolysis of larger alkanes and alcohols. Their thermal decomposition plays important role in fuel consumption under combustion conditions, yet seldom investigated. In this work, we studied the title reactions behind reflected shock waves over temperatures of 1178 – 1416 K and pressures near 1.2 bar. We monitored absorbance time-history of the product allyl radicals by employing a sensitive UV diagnostic scheme at a wavelength of 220 nm. We extracted the target rate coefficients by simulating the measured absorbance profiles with detailed kinetic models. Our determined rate coefficients of 1-butene (k1) and 1-pentene (k2) thermal decomposition may be expressed as (unit s−1): We believe the current work provides the first direct measurements of these reactions. Our 1-butene thermal decomposition rate coefficients exhibit a positive Arrhenius temperature dependence. Around 1350 K and 1 bar, 1-butene decomposition proceeds ∼ 4.5 times faster than n-butane, and ∼ 66 times faster than 1,3-butadiene. Our work extends the literature measurements of 1-butene decomposition to temperatures higher than 1310 K. Literature measurements above 1000 K underestimate our rate coefficients by ∼ 20 %. Additionally, our 1-butene rate coefficients provide an analogy to bio-derived molecules containing similar allylic-alkylic C-C bonds, such as methyl-3-hexenoate. For 1-pentene thermal decomposition, we observed the product allyl radicals starting from 1178 K compared to 1213 K in 1-butene measurements. Thus 1-pentene decomposition proceeds 2 – 6 times faster than 1-butene, and shows a gentler Arrhenius temperature dependence. The current literature models exhibit a range of rate values that vary by an order of magnitude, resulting in noticeable discrepancies. Our study addresses this issue by providing much-needed clarity and precision. Furthermore, we implemented our rate coefficients in literature kinetic models and evaluated their influence on ignition delay time (IDT) and speciation measurements. The results indicate that our rate coefficients generally improved the model performance.
+                            </div>
+        </li>
+        
+
+
+        <li>
+        <p>                 <a href="https://pubs.acs.org/doi/10.1021/acs.energyfuels.0c03086">
+                            Construction of a Skeletal Oxidation Mechanism for 2,5-Dimethylfuran Using Decoupling Methodology and Reaction Class-Based Global Sensitivity Analysis
+        </a></p>
+                            <p><b><u>Chengyu Zhou</u></b>, Yachao Chang, Pengzhi Wang, Bo Niu, and Ming Jia</p>
+                            <p><i>Energy and Fuels,</i> <b>2020</b>, <i>34</i>, 16654-16665</p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">As a promising alternative biofuel, 2,5-dimethylfuran (DMF) has caused great concern recently. In this research, a new skeletal oxidation mechanism for DMF is built by merging the decoupling methodology with the reaction class-based global sensitivity analysis. First, the global sensitivity and path sensitivity analyses are used to identify the dominant reaction classes in the fuel-related submechanism of DMF. Then, the important isomers in the dominant reaction classes are chosen with the rate of production analysis. In addition, the vertical reaction lumping is performed to obtain global reactions for the reaction classes based on the steady-state assumption of the involved intermediate radicals. A skeletal C4–C6 submechanism is obtained. Based on the decoupling methodology, an original skeletal mechanism of DMF is constructed by adding the skeletal fuel-related sub-mechanism into a compact C0–C3 submechanism. Third, the reaction rate coefficients involving the fuel-related species are tuned within their uncertainty ranges through the genetic algorithm to ameliorate the predictions of the skeletal mechanism on autoignition times in shock tubes and key species evolution in jet-stirred reactors (JSRs). The final skeletal mechanism for DMF is obtained, consisting of 57 species and 212 reactions. The satisfactory agreement between the measurement and prediction shows that the final skeletal mechanism is able to well capture the ignition and combustion phenomenon of DMF under wide operating conditions.
+                            </div>
+        </li>
+        
+
+
+        <li>
+        <p>                 <a href="https://pubs.acs.org/doi/10.1021/acs.energyfuels.9b02249">
+                            Reduction of Detailed Chemical Mechanisms Using Reaction Class-Based Global Sensitivity and Path Sensitivity Analyses
+        </a></p>
+                            <p>Yachao Chang, Ming Jia, Bo Niu, Maozhao Xie, <b><u>Chengyu Zhou</u></b></p>
+                            <p><i>Energy and Fuels,</i> <b>2019</b>, <i>33</i>, 9289-9301</p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">Reduced chemical mechanisms with a small size and good performance are very important for the simulation of advanced combustion engines. In the present study, a new reduction method of detailed chemical mechanisms was proposed using reaction class-based global sensitivity and path analyses. During the reduction process, the influence of the species and reactions was determined according to the contribution of their corresponding reaction classes to the prediction uncertainties by calculating the nominal sensitivity index and the path sensitivity coefficient of each reaction class from the detailed mechanism. Furthermore, the dependence of the prediction target on the operating temperature, pressure, and equivalence ratio was studied. After establishing the initial reduced mechanism, the refinement of the rate coefficients in the fuel-specific submechanism was conducted to improve the nominal predicted value of the reduced mechanism covering broad temperature conditions. Based on the proposed method, a reduced n-heptane mechanism with 89 species and 276 reactions is obtained from a detailed one comprising 645 species and 2827 reactions. By comparing the calculated value of the reduction targets from the reduced mechanism and the detailed mechanism over broad operating conditions, the reliability of the reduced mechanism was examined. Good agreements for the predicted data between the reduced and detailed mechanisms indicate the advantages of the present reduction method. Compared to the other methods, the reduced mechanism built using the present method was capable of better reproducing the prediction performance of the detailed mechanism with a more compact size.
+                            </div>
+        </li>
+        </ol>
+        </div>
+        </div>
         </div>
     </div>
 
+    <!-- Add the event listener for the menu toggle button -->
     <script>
-    function openNav() {
-        document.getElementById("layout-menu-container").classList.add("active");
-    }
-
-    function closeNav() {
-        document.getElementById("layout-menu-container").classList.remove("active");
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        // Menu toggle for sidebar
-        const menuToggle = document.getElementById("menu-toggle");
-        if (menuToggle) {
-            menuToggle.addEventListener("click", function(e) {
-                e.stopPropagation(); // Prevent click from bubbling
-                const menuContainer = document.getElementById("layout-menu-container");
-                const mobileMenu = document.getElementById('mobile-menu');
-                
-                // Toggle mobile menu
-                mobileMenu.classList.toggle('show');
-                document.body.classList.toggle('menu-open');
-                
-                // Toggle sidebar menu if needed
-                if (menuContainer) {
-                    if (menuContainer.classList.contains("active")) {
-                        closeNav();
-                    } else {
-                        openNav();
-                    }
-                }
-            });
-        }
-        
-        // Close sidebar menu when clicking outside
-        document.addEventListener("click", function(event) {
-            const menuContainer = document.getElementById("layout-menu-container");
-            const menuToggle = document.getElementById("menu-toggle");
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            // Close sidebar if open and clicked outside
-            if (menuContainer && menuToggle && 
-                menuContainer.classList.contains("active") && 
-                !menuContainer.contains(event.target) && 
-                event.target !== menuToggle &&
-                !menuToggle.contains(event.target)) {
-                closeNav();
-            }
-            
-            // Close mobile menu if open and clicked outside
-            if (mobileMenu && menuToggle && 
-                mobileMenu.classList.contains('show') && 
-                !mobileMenu.contains(event.target) && 
-                event.target !== menuToggle &&
-                !menuToggle.contains(event.target)) {
-                mobileMenu.classList.remove('show');
-                document.body.classList.remove('menu-open');
-            }
-        });
-    });
+        document.getElementById('menu-toggle').addEventListener('click', toggleMobileMenu);
     </script>
 </body>
 </html>
