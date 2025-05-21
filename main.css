@@ -523,10 +523,86 @@ div#text-img-container {
 	margin-bottom: 20px;
 }
 
+/* Base styles for image container */
 div#img-container {
-	float: left;
-	padding-top: 0px;
-	text-align: center;
+    float: left;
+    padding-top: 0px;
+    text-align: center;
+}
+
+div#img-container img {
+    padding: 0px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+}
+
+/* Prevent hover effects */
+.no-hover,
+.no-hover:hover,
+.no-hover:active,
+.no-hover:focus {
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+    pointer-events: none !important;
+}
+
+.no-hover img,
+.no-hover:hover img,
+.no-hover:active img,
+.no-hover:focus img {
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+    pointer-events: none !important;
+}
+
+/* For smaller screens */
+@media screen and (max-width: 768px) {
+    div#layout-content-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    div#img-container {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 15px;
+        width: 100%;
+        position: relative;
+        float: none;
+    }
+
+    div#img-container img {
+        max-width: 80%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        transform: none !important;
+        transition: none !important;
+        will-change: auto !important;
+    }
+
+    div#text-container {
+        width: 100%;
+        text-align: left;
+        margin-top: 0;
+        padding: 0 10px;
+        position: relative;
+    }
+
+    div#text-container h1,
+    div#text-container h2,
+    div#text-container h3 {
+        text-align: center;
+    }
 }
 
 div#text-container {
@@ -781,44 +857,6 @@ a {
   color: var(--link-color);
 }
 
-
-/* For smaller screens, add padding and place the image above the text */
-@media screen and (max-width: 768px) {
-    div#layout-content-container {
-        display: flex;
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center; /* Center align content */
-        padding: 20px; /* Add padding */
-    }
-
-    div#img-container {
-        display: flex; /* Use flex for alignment */
-        justify-content: center; /* Center the image horizontally */
-        text-align: center; /* Center-align text in the container */
-        margin-bottom: 15px; /* Add spacing below the image */
-        width: 100%; /* Ensure full width */
-    }
-
-    div#img-container img {
-        max-width: 80%; /* Scale the image */
-        height: auto; /* Maintain aspect ratio */
-        margin: 0 auto; /* Center the image horizontally */
-        display: block; /* Block-level for consistent centering */
-    }
-
-    div#text-container {
-        width: 100%; /* Full width for the text */
-        text-align: left; /* Align text to the left */
-        margin-top: 0; /* Remove extra spacing */
-        padding: 0 10px; /* Add padding for readability */
-    }
-
-    div#text-container h1,
-    div#text-container h2,
-    div#text-container h3 {
-        text-align: center; /* Center headers */
-    }
-}
 
 /* Adjust title for smaller screens */
 @media screen and (max-width: 768px) {

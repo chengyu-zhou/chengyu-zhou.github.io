@@ -110,9 +110,46 @@ MathJax.Hub.Config({
     }
     
     #layout-content {
-        position: relative;
-        left: 0;
-        transition: none; /* Remove any transitions */
+        padding: -17px 15px 0 15px !important;
+        margin-top: -17px !important;
+    }
+
+    #toptitle {
+        margin: 0 !important;
+        padding: 0 15px !important;
+    }
+
+    h1 {
+        margin: 0 !important;
+        padding: 0 15px !important;
+    }
+    
+    /* Adjust paragraphs and lists for better mobile viewing */
+    p {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    /* Adjust list padding to include bullet points */
+    ul, ol {
+        padding-left: 30px !important; /* Increased padding to accommodate bullet points */
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Make h2 dividing lines have the same padding */
+    h2 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    /* Ensure any horizontal rules have same padding */
+    hr {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+        width: calc(100% - 30px) !important;
     }
 }
 
@@ -315,8 +352,8 @@ div#layout-content-container {
         <div id="layout-content-container">
             <div id="layout-content">
                 <div id="text-img-container">
-                    <div id="img-container">  
-                        <a href="https://chengyu-zhou.github.io/">
+                    <div id="img-container" class="no-hover">  
+                        <a href="https://chengyu-zhou.github.io/" class="no-hover" style="pointer-events: none;">
                             <script type="text/javascript">
                                 var images = ['"figures/profile2.jpg" width="230px" height="257.6px">']; <!-- # 225:252 -->
                                 start = '<img src=';

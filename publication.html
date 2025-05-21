@@ -163,40 +163,36 @@ MathJax.Hub.Config({
     }
 }
 
-/* Keep mobile layout unchanged */
+/* Mobile layout adjustments */
 @media screen and (max-width: 768px) {
-    #layout-menu {
-        display: none !important;
-    }
-    #darkModeButton {
-        right: 15px !important;
-    }
     #layout-content {
-        padding: 5px 15px !important;
-        margin-top: -65px !important; /* Add negative margin to reduce space above title */
+        padding: -17px 15px 0 15px !important;
+        margin-top: -17px !important;
     }
 
-    #layout-content-container {
-        margin-top: 65px !important; /* Keep this value to ensure proper spacing below header */
-    }
-
-    /* Add padding for other elements to match research.html */
     #toptitle {
         margin: 0 !important;
-        padding: 0 15px !important; /* Add 15px left/right padding */
+        padding: 0 15px !important;
     }
 
     h1 {
         margin: 0 !important;
-        padding: 0 15px !important; /* Add 15px left/right padding */
+        padding: 0 15px !important;
     }
-
+    
     /* Adjust paragraphs and lists for better mobile viewing */
-    p, ul, ol {
+    p {
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
-
+    
+    /* Adjust list padding to include bullet points */
+    ul, ol {
+        padding-left: 30px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+    }
+    
     /* Make h2 dividing lines have the same padding */
     h2 {
         padding-left: 15px !important;
@@ -204,28 +200,18 @@ MathJax.Hub.Config({
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
-
+    
     /* Ensure any horizontal rules have same padding */
     hr {
         margin-left: 15px !important;
         margin-right: 15px !important;
         width: calc(100% - 30px) !important;
     }
-
-    /* Special handling for ordered list in publications */
-    ol {
-        margin-left: 15px !important;
-        padding-left: 15px !important;
-    }
-
-    ol li {
-        margin-right: 15px !important;
-    }
 }
 
 /* Update content spacing */
 #layout-content {
-    padding: 20px 0 0 0 !important; /* Reduced from 30px to 20px */
+    padding: 20px 0 0 0 !important;
 }
 
 #toptitle {

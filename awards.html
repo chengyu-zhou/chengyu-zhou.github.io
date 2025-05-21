@@ -192,8 +192,8 @@ div#toptitle {
 /* Mobile layout adjustments */
 @media screen and (max-width: 768px) {
     #layout-content {
-        padding: -17px 15px 0 15px !important; /* Added 15px padding to left and right */
-        margin-top: 3px !important;
+        padding: -17px 15px 0 15px !important;
+        margin-top: -17px !important;
     }
 
     #toptitle {
@@ -203,19 +203,36 @@ div#toptitle {
 
     h1 {
         margin: 0 !important;
-        padding: 0  15px !important;
-    }
-
-    .content-container {
         padding: 0 15px !important;
     }
-
-    /* Adjust list items padding if needed */
-    ul {
-        padding-left: 30 px !important; /* Ensure list items are aligned properly */
+    
+    /* Adjust paragraphs and lists for better mobile viewing */
+    p {
+        padding-left: 15px !important;
         padding-right: 15px !important;
     }
-
+    
+    /* Adjust list padding to include bullet points */
+    ul, ol {
+        padding-left: 30px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Make h2 dividing lines have the same padding */
+    h2 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    /* Ensure any horizontal rules have same padding */
+    hr {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+        width: calc(100% - 30px) !important;
+    }
 
     #darkModeButton {
         right: 5px !important; /* Increased from 15px to 20px to move right */
