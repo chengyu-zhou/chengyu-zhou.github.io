@@ -1,0 +1,499 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="icon" href="./figures/yu2.jpeg">
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Chengyu Zhou</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        } else if (localStorage.getItem('darkMode') === 'disabled') {
+            document.body.classList.remove('dark-mode');
+        } else {
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDarkMode) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+
+        const button = document.getElementById('darkModeButton');
+        button.innerHTML = document.body.classList.contains('dark-mode') 
+            ? '<i class="fa-solid fa-sun"></i>' 
+            : '<i class="fa-solid fa-moon"></i>';
+
+        button.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            
+            button.innerHTML = isDarkMode 
+                ? '<i class="fa-solid fa-sun"></i>' 
+                : '<i class="fa-solid fa-moon"></i>';
+
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('darkMode') === null) {
+                const prefersDarkMode = e.matches;
+                if (prefersDarkMode) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            }
+        });
+    });
+</script>
+
+<style>
+#menu-toggle {
+    display: none !important;
+    position: absolute !important;
+    left: 15px !important;
+    top: 12px !important;
+    z-index: 1000 !important;
+    color: white !important;
+    font-size: 28px !important;
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: transform 0.3s ease; /* Add transition for click effect */
+}
+
+#menu-toggle:active {
+    transform: scale(0.9); /* Slight scale effect when clicked */
+}
+
+@media screen and (max-width: 768px) {
+    #menu-toggle {
+        display: block !important;
+    }
+    
+    #header-icon-text-container #layout-menu {
+        display: none !important;
+    }
+    
+    #mobile-menu.show {
+        display: block;
+    }
+    
+    /* Ensure main content stays unchanged */
+    body.menu-open {
+        overflow: hidden; /* Prevent scrolling when menu is open */
+    }
+    
+    #layout-content {
+        padding: -17px 15px 0 15px !important;
+        margin-top: -17px !important;
+    }
+
+    #toptitle {
+        margin: 0 !important;
+        padding: 0 15px !important;
+    }
+
+    h1 {
+        margin: 0 !important;
+        padding: 0 15px !important;
+    }
+    
+    /* Adjust paragraphs and lists for better mobile viewing */
+    p {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    /* Adjust list padding to include bullet points */
+    ul, ol {
+        padding-left: 30px !important; /* Increased padding to accommodate bullet points */
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Make h2 dividing lines have the same padding */
+    h2 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    /* Ensure any horizontal rules have same padding */
+    hr {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+        width: calc(100% - 30px) !important;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    #mobile-menu {
+        display: none !important;
+    }
+}
+
+#darkModeButton {
+    position: absolute !important;
+    right: 15px !important;
+    top: 22px !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 1000 !important;
+}
+
+#darkModeButton i {
+    color: white !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+#layout-menu-container {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #14003a;
+    transition: 0.3s;
+    z-index: 999;
+    overflow-y: auto;
+    padding-top: 60px;
+}
+
+#layout-menu-container.active {
+    left: 0;
+}
+
+.closebtn {
+    display: block !important;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px !important;
+    color: white;
+    cursor: pointer;
+}
+
+/* Menu spacing */
+#layout-menu {
+    display: flex;
+    align-items: center;
+    gap: 5px !important; /* Same small gap as awards.html */
+}
+
+/* Larger screen adjustments */
+@media screen and (min-width: 769px) {
+    #darkModeButton {
+        right: calc((100vw - 925px) / 2) !important;
+        top: 22px !important;
+    }
+}
+
+/* Keep mobile layout unchanged */
+@media screen and (max-width: 768px) {
+    #layout-menu {
+        display: none !important;
+    }
+    #darkModeButton {
+        right: 15px !important;
+    }
+}
+
+/* Ensure header stays on top */
+div#header {
+    z-index: 1000 !important;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 250px; /* Fixed width for the menu */
+    height: 100vh; /* Full height */
+    background-color: #14003a;
+    z-index: 1000;
+    padding: 20px 0;
+    text-align: center; /* Center the text */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2); /* Add shadow for better visibility */
+}
+
+/* Make all side menu links white by default */
+#layout-menu a, 
+#layout-menu-container #layout-menu a,
+.mobile-menu a {
+    color: white !important;
+    text-decoration: none;
+}
+
+/* Style for current/active page */
+#layout-menu a.current, 
+#layout-menu-container #layout-menu a.current,
+.mobile-menu a.current {
+    color: #FFA500 !important;
+}
+
+/* Style for current/active page on larger screens */
+@media screen and (min-width: 769px) {
+    #header-icon-text-container #layout-menu a.current {
+        color: #FFA500 !important;
+    }
+}
+
+/* Override the blue color for Home link in the top menu - but not when it's the current page */
+#header-icon-text-container #layout-menu a[href="https://chengyu-zhou.github.io/"]:not(.current) {
+    color: white !important;
+}
+
+/* Hover effect for menu items */
+#layout-menu a:hover, 
+#layout-menu-container #layout-menu a:hover,
+.mobile-menu a:hover {
+    color: #FFA500 !important; /* Match the hover color used in desktop menu */
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 15px 0;
+    font-size: 18px;
+    width: 100%;
+    text-align: center; /* Center the text */
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Prevent main content from changing */
+#layout-content {
+    position: relative;
+    z-index: 1;
+    background-color: white; /* Background color for light mode */
+}
+
+body.dark-mode #layout-content {
+    background-color: #313334; /* Dark background in dark mode */
+}
+
+div#layout-content-container {
+    margin-top: 50px !important; /* Reduced from 65px to 15px to reduce space above profile */
+    max-width: 925px; /* Match the main content width */
+    margin-left: auto; /* Center the content */
+    margin-right: auto; /* Center the content */
+    padding: 0; /* Remove any extra padding */
+    background: none;
+    outline: none; /* Remove any debug highlights */
+}
+</style>
+
+</head>
+<body>
+
+<div id="main-container">
+    <div id="header-container">
+        <div id="header">
+            <button id="menu-toggle" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div id="header-icon-text-container">
+                <div id="header-text-container">
+                    <a href="https://chengyu-zhou.github.io/">Chengyu Zhou</a>
+                </div>
+                <div id="layout-menu">
+                    <a href="https://chengyu-zhou.github.io/" class="current">Home</a>
+                    <a href="research.html">Research</a>
+                    <a href="publication.html">Publications</a>
+                    <a href="awards.html">Awards</a>
+                </div>
+            </div>
+            <button id="darkModeButton"><i class="fa-solid fa-moon"></i></button>
+        </div>
+    </div>
+    
+    <div id="layout">
+        <div id="layout-content-container">
+            <div id="layout-content">
+                <div id="text-img-container">
+                    <div id="img-container" class="no-hover">  
+                        <a href="https://chengyu-zhou.github.io/" class="no-hover" style="pointer-events: none;">
+                            <script type="text/javascript">
+                                var images = ['"figures/profile2.jpg" width="230px" height="257.6px">']; <!-- # 225:252 -->
+                                start = '<img src=';
+                                function printImage() {
+                                    var rand_int = Math.floor(Math.random() * images.length);
+                                    document.write(start + images[rand_int]);
+                                }
+                            </script>
+                            <script type="text/javascript">
+                                printImage();
+                            </script>
+                        </a>&nbsp;
+                    </div>
+
+<div id="text-container"> 
+<p><h3>Chengyu Zhou</h3></p> 
+<td align="left"><p>Ph.D. Student (Sept. 2023-present)<br /> 
+<a href="https://che.northeastern.edu/">Department of Chemical Engineering</a> <br />
+<a href="https://www.northeastern.edu/">Northeastern University</a><br /></p>
+<p>Office: 259 CN Cullinane Hall, Northeastern University <br />
+Address: Boston, MA 02115-5005, United States <br />
+Email address: zhou.chengyu1 AT northeastern.edu <br /></p>
+<p>
+    <!-- Load the necessary stylesheets -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+    <!-- Google Scholar Icon -->
+    <a href="https://scholar.google.com/citations?user=aig4SF8AAAAJ&hl=en" target="_blank">
+      <i class="ai ai-google-scholar social-icon" style="font-size:2.0em;"></i>
+    </a>&nbsp;&nbsp;&nbsp;
+  
+    <!-- LinkedIn Icon -->
+    <a href="https://www.linkedin.com/in/chengyu-zhou-948bb6208/" target="_blank">
+      <i class="fa fa-linkedin-square social-icon" style="font-size:1.9em; vertical-align: 0.05em;"></i>
+    </a>&nbsp;
+</p>
+</div>
+</div>
+
+<h2>About me</h2>
+<p>I am a second-year Ph.D. student at <a href="https://www.northeastern.edu/">Northeastern University</a>. My Ph.D. research concentrates on designing and applying computational tools based on electronic structure theory and machine learning to understand and design heterogeneous catalysts. 
+My current research focuses on the fundamental chemistry in lithium-mediated nitrogen reduction reaction (NRR).</p>  
+
+<h2>Education</h2>
+<ul>
+<li><p>Ph.D., Chemical Engineering, <a href="https://www.northeastern.edu/">Northeastern University</a>, United States, 2023-present (Advisor: <a href="https://coe.northeastern.edu/people/zhao-qing/">Prof. Qing Zhao</a>) </p></li>
+<li><p>M.S., Mechanical Engineering, <a href="https://www.kaust.edu.sa/en">KAUST</a>, Saudi Arabia, 2021-2023 (Advisor: <a href="https://www.kaust.edu.sa/en/study/faculty/aamir-farooq/">Prof. Aamir Farooq</a>) </p></li>
+<li><p>B.S., Energy and Power Engineering, <a href="https://en.dlut.edu.cn/">Dalian University of Technology</a> (DLUT), China, 2017-2021 (Advisor: <a href="http://faculty.dlut.edu.cn/jiaming/en/index.htm/">Prof. Ming Jia</a>)</p></li>
+</ul>
+
+<h2>News</h2>
+<ul>
+<li><p>Apr. 2025: Published the second paper in Journal of Catalysis! More papers are on the way!</p></li>
+<li><p>Feb. 2025: Published the first paper on Li-NRR in Zhao group!</p></li>
+<li><p>Jan. 2025: Won the best poster award at New England Catalysis Symposium (<a href="https://che.northeastern.edu/news/che-phd-student-wins-best-poster-award-at-necs/" target="_blank">News</a>)!</p></li>
+<li><p>Apr. 2024: Just finished all my first-year finals! Looking forward to summer research!</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="layout-menu-container">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div id="layout-menu">
+        <a href="https://chengyu-zhou.github.io/" class="current">Home</a>
+        <a href="research.html">Research</a>
+        <a href="publication.html">Publications</a>
+        <a href="awards.html">Awards</a>
+    </div>
+</div>
+
+<div id="mobile-menu" class="mobile-menu">
+    <a href="https://chengyu-zhou.github.io/" class="current">Home</a>
+    <a href="research.html">Research</a>
+    <a href="publication.html">Publications</a>
+    <a href="awards.html">Awards</a>
+</div>
+
+<script>
+function openNav() {
+    document.getElementById("layout-menu-container").classList.add("active");
+}
+
+function closeNav() {
+    document.getElementById("layout-menu-container").classList.remove("active");
+}
+
+// Add event listener for the menu toggle button
+document.addEventListener('DOMContentLoaded', function() {
+    // Menu toggle for sidebar
+    const menuToggle = document.getElementById("menu-toggle");
+    if (menuToggle) {
+        menuToggle.addEventListener("click", function(e) {
+            e.stopPropagation(); // Prevent click from bubbling
+            const menuContainer = document.getElementById("layout-menu-container");
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Toggle mobile menu
+            mobileMenu.classList.toggle('show');
+            document.body.classList.toggle('menu-open');
+            
+            // Toggle sidebar menu if needed
+            if (menuContainer) {
+                if (menuContainer.classList.contains("active")) {
+                    closeNav();
+                } else {
+                    openNav();
+                }
+            }
+        });
+    }
+    
+    // Close sidebar menu when clicking outside
+    document.addEventListener("click", function(event) {
+        const menuContainer = document.getElementById("layout-menu-container");
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Close sidebar if open and clicked outside
+        if (menuContainer && menuToggle && 
+            menuContainer.classList.contains("active") && 
+            !menuContainer.contains(event.target) && 
+            event.target !== menuToggle &&
+            !menuToggle.contains(event.target)) {
+            closeNav();
+        }
+        
+        // Close mobile menu if open and clicked outside
+        if (mobileMenu && menuToggle && 
+            mobileMenu.classList.contains('show') && 
+            !mobileMenu.contains(event.target) && 
+            event.target !== menuToggle &&
+            !menuToggle.contains(event.target)) {
+            mobileMenu.classList.remove('show');
+            document.body.classList.remove('menu-open');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

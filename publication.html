@@ -1,0 +1,802 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="icon" href="./figures/yu2.jpeg">
+<link rel="stylesheet" href="main.css" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Chengyu Zhou</title>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+<style>
+/* Existing styles remain the same */
+#menu-toggle {
+    display: none !important;
+    position: absolute !important;
+    left: 15px !important;
+    top: 12px !important;
+    z-index: 1000 !important;
+    color: white !important;
+    font-size: 28px !important;
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: transform 0.3s ease;
+}
+
+#menu-toggle:active {
+    transform: scale(0.9);
+}
+
+@media screen and (max-width: 768px) {
+    #menu-toggle {
+        display: block !important;
+    }
+
+    #header-icon-text-container #layout-menu {
+        display: none !important;
+    }
+
+    #mobile-menu.show {
+        display: block !important;
+    }
+
+    /* Ensure main content stays unchanged */
+    body.menu-open {
+        overflow: hidden;
+    }
+}
+
+#darkModeButton {
+    position: absolute !important;
+    right: 15px !important;
+    top: 22px !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 1000 !important;
+}
+
+#darkModeButton i {
+    color: white !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+#layout-menu-container {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #14003a;
+    transition: 0.3s;
+    z-index: 999;
+    overflow-y: auto;
+    padding-top: 60px;
+}
+
+#layout-menu-container.active {
+    left: 0;
+}
+
+.closebtn {
+    display: block !important;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px !important;
+    color: white;
+    cursor: pointer;
+}
+
+#header-icon-text-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+#layout-menu {
+    display: flex;
+    align-items: center;
+    gap: 5px !important;
+}
+
+/* Adjust the layout content container spacing */
+#layout-content-container {
+    margin-top: 65px !important; /* Match the header height */
+    max-width: 925px; /* Match the main content width */
+    margin-left: auto; /* Center the content */
+    margin-right: auto; /* Center the content */
+    padding: 0; /* Remove any extra padding */
+}
+
+/* Adjust the main layout spacing */
+#layout {
+    padding-top: 0 !important; /* Remove padding */
+    margin-top: 0 !important; /* Remove margin */
+}
+
+/* Ensure the title spacing is consistent */
+#toptitle {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Adjust spacing for larger screens */
+@media screen and (min-width: 769px) {
+    #layout-content-container {
+        margin-top: 0 !important;
+        padding-top: 20px !important;
+    }
+    #darkModeButton {
+        right: calc((100vw - 925px) / 2) !important;
+        top: 22px !important;
+    }
+    #header-icon-text-container #layout-menu a.current {
+        color: #FFA500 !important;
+    }
+}
+
+/* Mobile layout adjustments */
+@media screen and (max-width: 768px) {
+    #layout-content {
+        padding: -17px 15px 0 15px !important;
+        margin-top: -17px !important;
+    }
+
+    #toptitle {
+        margin: 0 !important;
+        padding: 0 15px !important;
+    }
+
+    h1 {
+        margin: 0 !important;
+        padding: 0 15px !important;
+    }
+    
+    /* Adjust paragraphs and lists for better mobile viewing */
+    p {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    /* Adjust list padding to include bullet points */
+    ul, ol {
+        padding-left: 30px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+    }
+    
+    /* Make publication list items responsive */
+    ol li {
+        margin-bottom: 20px;
+        padding-right: 15px;
+        box-sizing: border-box;
+    }
+    
+    ol li p {
+        margin: 5px 0;
+        line-height: 1.5;
+    }
+    
+    ol li a {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.4;
+    }
+    
+    /* Make h2 dividing lines have the same padding */
+    h2 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    /* Ensure any horizontal rules have same padding */
+    hr {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+        width: calc(100% - 30px) !important;
+    }
+    
+    /* Ensure publication buttons are properly spaced on mobile */
+    .publication-buttons {
+        padding-left: 15px;
+        margin-top: 10px;
+    }
+}
+
+/* Update content spacing */
+#layout-content {
+    padding: 20px 0 0 0 !important;
+}
+
+#toptitle {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+h1 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Remove any extra spacing from containers */
+div#main-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div#layout {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure header stays on top */
+div#header {
+    z-index: 1000 !important;
+}
+
+/* Prevent main content from changing */
+#layout-content {
+    position: relative;
+    z-index: 1;
+    background-color: white;
+}
+
+body.dark-mode #layout-content {
+    background-color: #313334; /* Dark background in dark mode */
+}
+
+#layout-menu-container #layout-menu a.current {
+    color: #FFA500 !important;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #14003a;
+    z-index: 9999;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+}
+
+.mobile-menu a {
+    display: block;
+    color: white !important;
+    text-decoration: none;
+    padding: 15px 0;
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    opacity: 1 !important;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu a.current {
+    color: #FFA500 !important;
+}
+
+.mobile-menu a:hover {
+    color: #FFA500 !important;
+}
+
+/* Styles for the abstract button and container */
+.publication-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.abstract-button {
+    background-color: #FFA500; /* Orange color */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.abstract-button:hover {
+    background-color: #FF8C00; /* Darker orange on hover */
+}
+
+.abstract-content {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    white-space: pre-line; /* Preserve line breaks */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease, margin 0.4s ease;
+}
+
+.abstract-content.show {
+    max-height: 2000px; /* Large enough to accommodate any abstract content */
+    opacity: 1;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Dark mode styles for abstract content */
+body.dark-mode .abstract-content {
+    background-color: #444;
+    color: #f0f0f0;
+    border-color: #555;
+}
+
+.abstract-content.hidden {
+    display: none;
+}
+
+/* Desktop bottom spacer to prevent content jumping */
+#desktop-bottom-spacer {
+    display: none; /* Hidden by default */
+}
+
+@media screen and (min-width: 769px) {
+    #desktop-bottom-spacer {
+        display: block;
+        height: 600px; /* Provides substantial buffer space */
+        width: 100%;
+    }
+}
+
+/* Mobile responsive styles for abstract content */
+@media screen and (max-width: 768px) {
+    .abstract-content {
+        padding: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        width: calc(100% - 30px);
+        box-sizing: border-box;
+    }
+    
+    .abstract-content img {
+        max-width: 100% !important;
+        height: auto !important;
+        width: 100% !important;
+        border-radius: 0px !important;
+    }
+    
+    .abstract-content p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .abstract-content div[style*="display: flex"] {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 15px !important;
+    }
+    
+    .abstract-content div[style*="text-align: center"] {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .abstract-content div[style*="width: 100%"] {
+        width: 100% !important;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+}
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Dark mode initialization
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        } else if (localStorage.getItem('darkMode') === 'disabled') {
+            document.body.classList.remove('dark-mode');
+        } else {
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDarkMode) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+
+        const button = document.getElementById('darkModeButton');
+        button.innerHTML = document.body.classList.contains('dark-mode')
+            ? '<i class="fa-solid fa-sun"></i>'
+            : '<i class="fa-solid fa-moon"></i>';
+
+        button.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+
+            button.innerHTML = isDarkMode
+                ? '<i class="fa-solid fa-sun"></i>'
+                : '<i class="fa-solid fa-moon"></i>';
+
+            localStorage.setItem('darkMode', isDarkMode ? 'enabled' : 'disabled');
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (localStorage.getItem('darkMode') === null) {
+                const prefersDarkMode = e.matches;
+                if (prefersDarkMode) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            }
+        });
+
+        // ===== AUTO ID GENERATION FOR ABSTRACTS =====
+        // Find all publication list items
+        const publicationItems = document.querySelectorAll('ol li');
+        
+        // Process each publication item
+        publicationItems.forEach((item, index) => {
+            // Find the abstract button and abstract content div within this publication item
+            const abstractButton = item.querySelector('.abstract-button');
+            const abstractContent = item.querySelector('.abstract-content');
+            
+            if (abstractButton && abstractContent) {
+                // Generate unique ID based on the position in the list
+                const uniqueId = `abstract${publicationItems.length - index}`;
+                
+                // Update or add the button's data attribute
+                abstractButton.setAttribute('data-abstract-id', uniqueId);
+                
+                // Update or add the abstract content's ID
+                abstractContent.id = uniqueId;
+                
+                // Make sure the abstract content has the hidden class
+                if (!abstractContent.classList.contains('hidden')) {
+                    abstractContent.classList.add('hidden');
+                }
+                
+                // Add click event listener directly to this button
+                abstractButton.addEventListener('click', function() {
+                    const contentId = this.getAttribute('data-abstract-id');
+                    const content = document.getElementById(contentId);
+                    
+                    // Check if we're on mobile screen (width <= 768px)
+                    const isMobile = window.innerWidth <= 768;
+                    
+                    if (isMobile) {
+                        // Mobile behavior: close other abstracts and scroll to the opened one
+                        const isOpening = content && content.classList.contains('hidden');
+                        
+                        // Close all other abstract contents first
+                        const allAbstractContents = document.querySelectorAll('.abstract-content');
+                        allAbstractContents.forEach(abstractContent => {
+                            if (abstractContent.id !== contentId) {
+                                abstractContent.classList.remove('show');
+                                abstractContent.classList.add('hidden');
+                            }
+                        });
+                        
+                        // Toggle the clicked abstract content
+                        if (content) {
+                            if (content.classList.contains('hidden')) {
+                                // Opening: smooth animation
+                                content.classList.remove('hidden');
+                                setTimeout(() => {
+                                    content.classList.add('show');
+                                }, 10);
+                            } else {
+                                // Closing: instant toggle
+                                content.classList.remove('show');
+                                content.classList.add('hidden');
+                            }
+                            
+                            // If we're opening this abstract, scroll to it after the transition completes
+                            if (isOpening) {
+                                setTimeout(() => {
+                                    // Find the publication list item that contains this abstract
+                                    const listItem = content.closest('li');
+                                    if (listItem) {
+                                        // Get the header height to account for it in scrolling
+                                        const header = document.getElementById('header');
+                                        const headerHeight = header ? header.offsetHeight : 60; // Default to 60px if header not found
+                                        
+                                        // Calculate the position to scroll to (list item position minus header height)
+                                        const listItemRect = listItem.getBoundingClientRect();
+                                        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                                        const targetScrollTop = currentScrollTop + listItemRect.top - headerHeight - 10; // 10px extra padding
+                                        
+                                        // Smooth scroll to the calculated position
+                                        window.scrollTo({
+                                            top: targetScrollTop,
+                                            behavior: 'smooth'
+                                        });
+                                    } else {
+                                        // Fallback to scrolling to the content itself
+                                        content.scrollIntoView({
+                                            behavior: 'smooth',
+                                            block: 'start',
+                                            inline: 'nearest'
+                                        });
+                                    }
+                                }, 450); // Wait for transition to complete before scrolling
+                            }
+                        }
+                    } else {
+                        // Desktop behavior: smooth opening, instant closing
+                        if (content) {
+                            if (content.classList.contains('hidden')) {
+                                // Opening: smooth animation
+                                content.classList.remove('hidden');
+                                setTimeout(() => {
+                                    content.classList.add('show');
+                                }, 10);
+                            } else {
+                                // Closing: instant toggle
+                                content.classList.remove('show');
+                                content.classList.add('hidden');
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    });
+
+    // Function to toggle mobile menu
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('show');
+        document.body.classList.toggle('menu-open');
+    }
+
+    // Function to close side nav
+    function closeNav() {
+        document.getElementById('layout-menu-container').classList.remove('active');
+    }
+</script>
+</head>
+
+<body>
+    <div id="main-container">
+        <div id="header-container">
+            <div id="header">
+                <button id="menu-toggle" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div id="header-icon-text-container">
+                    <div id="header-text-container">
+                        <a href="https://chengyu-zhou.github.io/">Chengyu Zhou</a>
+                    </div>
+                    <div id="layout-menu">
+                        <a href="https://chengyu-zhou.github.io/">Home</a>
+                        <a href="research.html">Research</a>
+                        <a href="publication.html" class="current">Publications</a>
+                        <a href="awards.html">Awards</a>
+                    </div>
+                </div>
+                <button id="darkModeButton"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+
+        <div id="layout-menu-container">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div id="layout-menu">
+                <a href="https://chengyu-zhou.github.io/">Home</a>
+                <a href="research.html">Research</a>
+                <a href="publication.html" class="current">Publications</a>
+                <a href="awards.html">Awards</a>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="https://chengyu-zhou.github.io/">Home</a>
+            <a href="research.html">Research</a>
+            <a href="publication.html" class="current">Publications</a>
+            <a href="awards.html">Awards</a>
+        </div>
+
+        <div id="layout">
+        <div id="layout-content-container">
+        <div id="layout-content">
+        <div id="toptitle">
+        <h1>Publications</h1>
+        </div>
+        <ol reversed style="list-style-position: outside; text-align: left;">
+        
+
+        <li>
+        <p>                 <a href="https://pubs.acs.org/doi/full/10.1021/acscatal.5c02570">
+                            Discovering Ni/Cu Single-Atom Alloy as a Highly Active and Selective Catalyst for Direct Methane Conversion to Ethylene: A First-Principles Kinetic Study
+        </a></p>
+                            <p>M. Kothakonda, S. LaCroix, <b><u>C. Zhou</u></b>, J. Yang, J. Su, Q. Zhao</p>
+                            <p><i>ACS Catalysis,</i> <b>2025</b>, <i>15</i>, 11608-11616</p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                                    <div style="text-align: center;">
+                                        <img src="https://pubs.acs.org/cms/10.1021/acscatal.5c02570/asset/images/medium/cs5c02570_0005.gif" style="max-width: 1000px; height: auto; border-radius: 0px;">
+                                    </div>
+                                    <div style="width: 100%;">
+                                        <p style="margin: 0; white-space: pre-line;">Direct methane conversion to liquid fuels or value-added chemicals is a promising technology to utilize natural resources without resorting to further petroleum extraction. However, discovering efficient catalysts for this reaction is challenging due to either coke formation or unfavorable C–H bond activation. Herein, we design single-atom alloy (SAA) catalysts to simultaneously eliminate the above two bottlenecks based on mechanism-guided strategies: (1) the active single atom enables favorable C–H bond breaking and (2) the less reactive host metal facilitates C–C coupling and thus avoids strong binding of carbonaceous species. Employing electronic structure theory calculations, we screened the stability of multiple SAAs with 3d-5d transition metals atomically dispersed on a copper surface in terms of avoiding dopant aggregation and segregation. We then evaluated reactivities of the stable SAAs as catalysts for direct methane conversion to C2 products, including methane dehydrogenation and C–C coupling mechanisms. Combining selectivity analysis with kinetic modeling, we predicted that nickel dispersed on copper, i.e., Ni/Cu SAA, is a highly active and selective catalyst that can efficiently transform methane to ethylene. This work designs efficient SAA catalysts for direct methane activation and provides chemical insights into engineering compositions of SAAs to tune their catalytic performances.</p>
+                                    </div>
+                                </div>
+                            </div>
+        </li>
+        
+
+        <li>
+        <p>                 <a href="https://doi.org/10.1016/j.jcat.2025.116194">
+                            Towards the Computational Design of Single Atom Alloys for Methane to Ethylene Conversion
+        </a></p>
+                            <p><b><u>C. Zhou</u></b>, M. Kothakonda, Q. Zhao</p>
+                            <p><i>Journal of Catalysis,</i> <b>2025</b>, <i>448</i>, 116194</p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                                    <div style="text-align: center;">
+                                        <img src="https://ars.els-cdn.com/content/image/1-s2.0-S0021951725002593-ga1.jpg" style="max-width: 1000px; height: auto; border-radius: 0px;">
+                                    </div>
+                                    <div style="width: 100%;">
+                                        <p style="margin: 0; white-space: pre-line;">Direct conversion of methane to value-added chemicals has been a longstanding challenge in leveraging abundant natural gas resources due to unfavorable C–H bond activation and coke formation. We recently evaluated stability and reactivity of single atom alloys (SAAs) formed by atomically doping 3d-5d transition metals on Cu(111) as catalysts for direct methane conversion to C2 hydrocarbons using density functional theory calculations. Here, to further develop catalyst design principles for this chemistry, we systematically evaluate kinetics of methane dehydrogenation and C–C coupling steps on ten promising Cu(111)-based SAAs and unearth descriptors that correlate with catalyst activity and selectivity. Our results show that ethylene formation is kinetically favored over ethane formation across all SAAs studied. Notably, catalytic activity of SAAs highly correlates with their selectivity for direct methane conversion to C2 products, highlighting the synergy between dopant and host metal in enhancing methane activation and preference towards C–C coupling. In addition, we identify C2H4 adsorption energy as an effective descriptor that guides the SAA reactivity for methane activation to ethylene. Combining all analyses, we discover that iridium dispersed on copper (Ir/Cu) SAA stands out as a highly active and selective catalyst for methane to ethylene conversion. These findings pave the way for high-throughput screening of a vast SAA chemical space for the chemistry of methane transformation.</p>
+                                    </div>
+                                </div>
+                            </div>
+        </li>
+        
+
+
+        <li>
+        <p>                 <a href="https://doi.org/10.1002/cphc.202401097">
+                            Revealing Mechanisms of Lithium-Mediated Nitrogen Reduction Reaction from First-Principles Simulations
+        </a></p>
+                            <p><b><u>C. Zhou</u></b>, Q. Zhao</p>
+                            <p><i>ChemPhysChem,</i> <b>2025</b>, <i>e202401097</i> <b>(Journal Cover art)</b></p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                                    <div style="text-align: center;">
+                                        <img src="https://chemistry-europe.onlinelibrary.wiley.com/cms/asset/9af50cc5-841f-41b1-917f-9ac313a165e2/cphc202401097-toc-0001-m.jpg" style="max-width: 600px; height: auto; border-radius: 0px;">
+                                    </div>
+                                    <div style="width: 100%;">
+                                        <p style="margin: 0; white-space: pre-line;">Recently, lithium-mediated nitrogen reduction reaction (Li-NRR) in nonaqueous electrolytes has proven to be an environmentally friendly and feasible route for ammonia electrosynthesis, revealing tremendous economic and social advantages over the industrial Haber-Bosch process which consumes enormous fossil fuels and generates massive carbon dioxide emissions, and direct electrocatalytic nitrogen reduction reaction (NRR) which suffers from sluggish kinetics and poor faradaic efficiencies. However, reaction mechanisms of Li-NRR and the role of solid electrolyte interface (SEI) layer in activating N2 remain unclear, impeding its further development. Here, using electronic structure theory, we discover a nitridation-coupled reduction mechanism and a nitrogen cycling reduction mechanism on lithium and lithium nitride surfaces, respectively, which are major components of SEI in experimental characterization. Our work reveals divergent pathways in Li-NRR from conventional direct electrocatalytic NRR, highlights the role of surface reconstruction in improving reactivity, and sheds light on further enhancing efficiency of ammonia electrosynthesis.</p>
+                                    </div>
+                                </div>
+                            </div>
+        </li>
+        
+
+
+        <li>
+        <p>                 <a href="https://doi.org/10.1016/j.combustflame.2023.113289">
+                            Allylic-alkylic C-C Bond Decomposition in 1-Butene and 1-Pentene
+        </a></p>
+                            <p><b><u>C. Zhou</u></b>, D. Liu, A. Farooq</p>
+                            <p><i>Combustion and Flame,</i> <b>2024</b>, <i>261</i>, 113289</p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                                    <div style="text-align: center;">
+                                        <img src="https://ars.els-cdn.com/content/image/1-s2.0-S0010218023006636-gr2.jpg" style="max-width: 1000px; height: auto; border-radius: 0px;">
+                                    </div>
+                                    <div style="width: 100%;">
+                                        <p style="margin: 0; white-space: pre-line;">1-Butene and 1-pentene are critical intermediates in the oxidation and pyrolysis of larger alkanes and alcohols. Their thermal decomposition plays important role in fuel consumption under combustion conditions, yet seldom investigated. In this work, we studied the title reactions behind reflected shock waves over temperatures of 1178 – 1416 K and pressures near 1.2 bar. We monitored absorbance time-history of the product allyl radicals by employing a sensitive UV diagnostic scheme at a wavelength of 220 nm. We extracted the target rate coefficients by simulating the measured absorbance profiles with detailed kinetic models. Our determined rate coefficients of 1-butene (k1) and 1-pentene (k2) thermal decomposition may be expressed as (unit s−1): We believe the current work provides the first direct measurements of these reactions. Our 1-butene thermal decomposition rate coefficients exhibit a positive Arrhenius temperature dependence. Around 1350 K and 1 bar, 1-butene decomposition proceeds ∼ 4.5 times faster than n-butane, and ∼ 66 times faster than 1,3-butadiene. Our work extends the literature measurements of 1-butene decomposition to temperatures higher than 1310 K. Literature measurements above 1000 K underestimate our rate coefficients by ∼ 20 %. Additionally, our 1-butene rate coefficients provide an analogy to bio-derived molecules containing similar allylic-alkylic C-C bonds, such as methyl-3-hexenoate. For 1-pentene thermal decomposition, we observed the product allyl radicals starting from 1178 K compared to 1213 K in 1-butene measurements. Thus 1-pentene decomposition proceeds 2 – 6 times faster than 1-butene, and shows a gentler Arrhenius temperature dependence. The current literature models exhibit a range of rate values that vary by an order of magnitude, resulting in noticeable discrepancies. Our study addresses this issue by providing much-needed clarity and precision. Furthermore, we implemented our rate coefficients in literature kinetic models and evaluated their influence on ignition delay time (IDT) and speciation measurements. The results indicate that our rate coefficients generally improved the model performance.</p>
+                                    </div>
+                                </div>
+                            </div>
+        </li>
+        
+
+
+        <li>
+        <p>                 <a href="https://pubs.acs.org/doi/10.1021/acs.energyfuels.0c03086">
+                            Construction of a Skeletal Oxidation Mechanism for 2,5-Dimethylfuran Using Decoupling Methodology and Reaction Class-Based Global Sensitivity Analysis
+        </a></p>
+                            <p><b><u>C. Zhou</u></b>, Y. Chang, P. Wang, B. Niu, M. Jia</p>
+                            <p><i>Energy and Fuels,</i> <b>2020</b>, <i>34</i>, 16654-16665</p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                                    <div style="text-align: center;">
+                                        <img src="https://pubs.acs.org/cms/10.1021/acs.energyfuels.0c03086/asset/images/medium/ef0c03086_0019.gif" style="max-width: 1000px; height: auto; border-radius: 0px;">
+                                    </div>
+                                    <div style="width: 100%;">
+                                        <p style="margin: 0; white-space: pre-line;">As a promising alternative biofuel, 2,5-dimethylfuran (DMF) has caused great concern recently. In this research, a new skeletal oxidation mechanism for DMF is built by merging the decoupling methodology with the reaction class-based global sensitivity analysis. First, the global sensitivity and path sensitivity analyses are used to identify the dominant reaction classes in the fuel-related submechanism of DMF. Then, the important isomers in the dominant reaction classes are chosen with the rate of production analysis. In addition, the vertical reaction lumping is performed to obtain global reactions for the reaction classes based on the steady-state assumption of the involved intermediate radicals. A skeletal C4–C6 submechanism is obtained. Based on the decoupling methodology, an original skeletal mechanism of DMF is constructed by adding the skeletal fuel-related sub-mechanism into a compact C0–C3 submechanism. Third, the reaction rate coefficients involving the fuel-related species are tuned within their uncertainty ranges through the genetic algorithm to ameliorate the predictions of the skeletal mechanism on autoignition times in shock tubes and key species evolution in jet-stirred reactors (JSRs). The final skeletal mechanism for DMF is obtained, consisting of 57 species and 212 reactions. The satisfactory agreement between the measurement and prediction shows that the final skeletal mechanism is able to well capture the ignition and combustion phenomenon of DMF under wide operating conditions.</p>
+                                    </div>
+                                </div>
+                            </div>
+        </li>
+        
+
+
+        <li>
+        <p>                 <a href="https://pubs.acs.org/doi/10.1021/acs.energyfuels.9b02249">
+                            Reduction of Detailed Chemical Mechanisms Using Reaction Class-Based Global Sensitivity and Path Sensitivity Analyses
+        </a></p>
+                            <p>Y. Chang, M. Jia, B. Niu, M. Xie, <b><u>C. Zhou</u></b></p>
+                            <p><i>Energy and Fuels,</i> <b>2019</b>, <i>33</i>, 9289-9301</p>
+                            <div class="publication-buttons">
+                                <button class="abstract-button">Abstract</button>
+                            </div>
+                            <div class="abstract-content hidden">
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                                    <div style="text-align: center;">
+                                        <img src="https://pubs.acs.org/cms/10.1021/acs.energyfuels.9b02249/asset/images/medium/ef9b02249_0001.gif" style="max-width: 1000px; height: auto; border-radius: 0px;">
+                                    </div>
+                                    <div style="width: 100%;">
+                                        <p style="margin: 0; white-space: pre-line;">Reduced chemical mechanisms with a small size and good performance are very important for the simulation of advanced combustion engines. In the present study, a new reduction method of detailed chemical mechanisms was proposed using reaction class-based global sensitivity and path analyses. During the reduction process, the influence of the species and reactions was determined according to the contribution of their corresponding reaction classes to the prediction uncertainties by calculating the nominal sensitivity index and the path sensitivity coefficient of each reaction class from the detailed mechanism. Furthermore, the dependence of the prediction target on the operating temperature, pressure, and equivalence ratio was studied. After establishing the initial reduced mechanism, the refinement of the rate coefficients in the fuel-specific submechanism was conducted to improve the nominal predicted value of the reduced mechanism covering broad temperature conditions. Based on the proposed method, a reduced n-heptane mechanism with 89 species and 276 reactions is obtained from a detailed one comprising 645 species and 2827 reactions. By comparing the calculated value of the reduction targets from the reduced mechanism and the detailed mechanism over broad operating conditions, the reliability of the reduced mechanism was examined. Good agreements for the predicted data between the reduced and detailed mechanisms indicate the advantages of the present reduction method. Compared to the other methods, the reduced mechanism built using the present method was capable of better reproducing the prediction performance of the detailed mechanism with a more compact size.</p>
+                                    </div>
+                                </div>
+                            </div>
+        </li>
+        </ol>
+        
+        <!-- Extra space for desktop to prevent content jumping -->
+        <div id="desktop-bottom-spacer"></div>
+        
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Add the event listener for the menu toggle button -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', toggleMobileMenu);
+    </script>
+</body>
+</html>

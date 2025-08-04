@@ -1,0 +1,1167 @@
+/* css file */
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+	 			 Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+				 Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+				 "Segoe UI Symbol";
+	padding: 0;
+	margin: 0;
+}
+
+
+div#main-container {
+	min-height: 100vh;
+	background: var(--background-color);
+	margin: auto;
+}
+
+div#header-container {
+	width: 100%;
+	height: 65px;
+}
+
+/* Header container */
+div#header {
+    width: 100vw;
+    height: 65px; /* Adjust height if necessary */
+    background: #14003a;
+    z-index: 1;
+    position: fixed;
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Vertically align items */
+    padding: 0;
+}
+
+/* Center container for header content */
+div#header-icon-text-container {
+    max-width: 925px; /* Match the max width of the main content */
+    width: 100%; /* Let it grow to full width within limits */
+    display: flex; /* Flexbox for aligning title and menu */
+    justify-content: space-between; /* Space between title and menu */
+    align-items: center; /* Vertically align items */
+}
+
+/* Header title */
+div#header-text-container {
+    color: white;
+    font-size: 30px;
+    font-weight: normal;
+	margin-left: 0; /* Ensure no left movement */
+    flex: 0 0 auto; /* Prevent shrinking or growing */
+}
+
+div#header-text-container a{
+	color: #ffffff;
+}
+
+div#header-text-container a:hover{
+	color: #FFA500;
+}
+
+div#layout {
+	width: 100vw;
+	min-height: calc(100vh - 70px);
+	padding-bottom: 0;
+	display: inline-block;
+}
+
+
+
+
+#layout-menu a {
+    color: #C0C0C0; /* Text color */
+    text-decoration: none; /* Remove underline */
+    font-weight: 600;
+    font-size: 16px;
+    padding: 5px 10px; /* Add padding for click area */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for size and color */
+}
+
+
+
+
+html, body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Prevent horizontal scrolling */
+}
+
+
+div#layout-content-container {
+    margin-top: 40px; /* Push content below the header */
+    max-width: 925px; /* Match the main content width */
+    margin-left: auto; /* Center the content */
+    margin-right: auto; /* Center the content */
+	padding: 0; /* Remove any extra padding */
+	background: none;
+	outline: none; /* Remove any debug highlights */
+}
+
+/* Remove margins and paddings in the body and html */
+body, html {
+    margin: 0;
+    padding: 0;
+	overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Allow vertical scrolling */
+    box-sizing: border-box; /* Include padding and border in dimensions */
+}
+
+div#layout-content {
+	min-height: calc(100vh - 100px);
+	max-width: 925px;
+	margin: auto;
+}
+
+
+/* Default scrollbar styling for light mode */
+div#layout-content-container::-webkit-scrollbar {
+    width: 8px !important; /* Vertical scrollbar width */
+    height: 8px !important; /* Horizontal scrollbar height */
+}
+
+div#layout-content-container::-webkit-scrollbar-thumb {
+    background-color: #cccccc !important; /* Light mode thumb color */
+    border-radius: 4px !important; /* Rounded corners */
+}
+
+div#layout-content-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1 !important; /* Light mode track color */
+}
+
+/* Dark mode scrollbar styling */
+body.dark-mode div#layout-content-container::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+body.dark-mode div#layout-content-container::-webkit-scrollbar-thumb {
+    background-color: #444444 !important; /* Dark mode thumb color */
+    border-radius: 4px !important;
+}
+
+body.dark-mode div#layout-content-container::-webkit-scrollbar-thumb:hover {
+    background-color: #666666 !important; /* Hover effect in dark mode */
+}
+
+body.dark-mode div#layout-content-container::-webkit-scrollbar-track {
+    background-color: #222222 !important; /* Dark mode track color */
+}
+
+
+
+
+tt {
+	background: #f3f5f7;
+	color: black;
+}
+
+pre, tt {
+	padding: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	font-size: 87.5%;
+	font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+	border-radius: 5px;
+	line-height: 1.5;
+	overflow: scroll;
+}
+
+a, a > tt {
+	color: #0366d6;
+	text-decoration: none;
+}
+
+a:hover, a:hover > tt{
+	/*border-bottom: 1.25px #0366d6 dashed;*/
+	color: #14003a;
+	border-bottom: 1px gray solid;
+}
+
+
+#layout-menu a.current:link,
+#layout-menu a.current:visited {
+    color: white;
+    text-decoration: none; /* Ensure no underline */
+}
+
+#layout-menu a:link, #layout-menu a:visited, #layout-menu a:hover {
+/* 	color: #527bbd; */
+	color: white;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 18px;
+}
+
+#layout-menu {
+	color: #C0C0C0;
+	text-decoration: none;
+	gap: 15px; /* Adjust spacing between links */
+    position: relative;
+    left: -35px; /* Move links slightly to the left */
+}
+
+#layout-menu a:hover {
+	color: #FFA500;
+	text-decoration: none;
+}
+
+div.menu-category {
+	margin-top: 16px;
+	padding-top: 8px;
+	padding-bottom: 0.1em;
+	padding-left: 25px;
+	padding-right: 25px;
+	font-size: 25px;
+	font-weight:600;
+	line-height: 2;
+	border-top: 0.8px solid #e1e4e8;
+}
+
+div.menu-item {
+	font-size: 16px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+div#toptitle {
+	padding-bottom: 0.2em;
+	margin-bottom: 1.5em;
+	border-bottom: 1px solid #e1e4e8;
+}
+
+/* Reduce space if we begin the page with a title. */
+div#toptitle + h2, div#toptitle + h3 {
+	margin-top: -0.7em;
+}
+
+div#subtitle {
+	margin-top: 0.0em;
+	margin-bottom: 0.0em;
+	padding-top: 0em;
+	padding-bottom: 0.1em;
+}
+
+em {
+	font-style: italic;
+}
+
+strong {
+	font-weight: bold;
+}
+
+
+h1, h2, h3 {
+	color: #14003a;
+	padding-bottom: 0.2em;
+	line-height: 1.25;
+	padding-top: 0.5em;
+	border-bottom: 1.5px solid #b6b5bc;
+	font-weight: 500;
+}
+
+h1 {
+	font-size: 32px;
+}
+
+h2 {
+	padding-top: 0.8em;
+	margin-bottom: 16px;
+	font-size: 24px;
+}
+
+h2 + h3 {
+	padding-top: 4px;
+}
+
+h3 {
+	font-size: 20px;
+	padding-top: 0px;
+	margin-bottom: 0px;
+	border-bottom: none;
+}
+
+p {
+	font-size: 16px;
+	line-height: 1.5;
+	margin-top: 0.0em;
+	margin-bottom: 0.8em;
+	padding: 0;
+	text-align: justify;
+}
+
+pre {
+	padding: 0;
+	margin: 0;
+}
+
+
+
+div#footer-container{
+}
+
+div#footer {
+	font-size: small;
+	color: #c0c0c0;
+	min-width: 200px;
+	max-width: 850px;
+	margin: auto;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	padding-left: 35px;
+	padding-right: 35px;
+}
+
+div#footer a {
+	color: #8b7cb0;
+}
+
+div#footer a:hover {
+	color: #14003a;
+}
+
+div#footer-text {
+	line-height: 30px;
+}
+
+ul, ol, dl {
+	margin-top: 0.2em;
+	padding-top: 0;
+	margin-bottom: 0.8em;
+}
+
+dt {
+	margin-top: 0.5em;
+	margin-bottom: 0;
+}
+
+dl {
+	margin-left: 20px;
+}
+
+dd {
+	color: #222222;
+}
+
+dd > *:first-child {
+	margin-top: 0;
+}
+
+ul {
+	list-style-position: outside;
+	list-style-type: square;
+}
+
+p + ul, p + ol {
+	margin-top: -0.5em;
+}
+
+li ul, li ol {
+	margin-top: -0.3em;
+}
+
+ol {
+	list-style-position: outside;
+	list-style-type: decimal;
+}
+
+li p, dd p {
+	margin-bottom: 0.3em;
+}
+
+
+ol ol {
+	list-style-type: lower-alpha;
+}
+
+ol ol ol {
+	list-style-type: lower-roman;
+}
+
+div.codeblock {
+}
+
+p + div.codeblock {
+	margin-top: 0.6em;
+}
+
+div.codeblock, div.infoblock {
+	margin-right: 0%;
+	margin-top: 1.2em;
+	margin-bottom: 1.3em;
+}
+
+div.blocktitle {
+	color: #0366d6;
+	font-size: 20px;
+	line-height: 2;
+}
+
+div.blockcontent {
+	padding: 10px;
+}
+
+div.infoblock > div.blockcontent {
+	background: #fffbdd;
+	border: 1px solid #f9c513;
+	border-radius: 9px;
+	color: #f9c513;
+}
+
+div.blockcontent p + ul, div.blockcontent p + ol {
+	margin-top: 0.4em;
+}
+
+div.infoblock p {
+	margin-bottom: 0em;
+}
+
+div.infoblock li p, div.infoblock dd p {
+	margin-bottom: 0.5em;
+}
+
+div.infoblock p + p {
+	margin-top: 0.8em;
+}
+
+div.codeblock > div.blockcontent {
+	border: none;
+	border-radius: 10px;
+	background: #f6f8fa;
+}
+
+span.pycommand {
+	color: #000070;
+}
+
+span.statement {
+	color: #008800;
+}
+span.builtin {
+	color: #000088;
+}
+span.special {
+	color: #990000;
+}
+span.operator {
+	color: #880000;
+}
+span.error {
+	color: #aa0000;
+}
+span.comment, span.comment > *, span.string, span.string > * {
+	color: #606060;
+}
+
+@media print {
+	#layout-menu {
+		display: none;
+	}
+
+}
+
+#fwtitle {
+	margin: 2px;
+}
+
+#fwtitle #toptitle {
+	padding-left: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+#layout-content h1:first-child, #layout-content h2:first-child, #layout-content h3:first-child {
+	margin-top: -0.7em;
+}
+
+div#toptitle h1, #layout-content div#toptitle h1 {
+	margin-bottom: 0.0em;
+	padding-bottom: 0.1em;
+	padding-top: 0;
+	margin-top: 0em;
+	border-bottom: none;
+}
+
+
+img {
+	padding: 0px;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+
+
+table {
+	border-collapse: collapse;
+}
+
+
+
+td {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	text-align: center;
+	border: 1px solid #d1d5da;
+	line-height: 2;
+}
+
+table + table {
+	margin-top: 1em;
+}
+
+#countries tr.r1 {
+    font-weight: 600;
+}
+
+#countries tr:nth-child(even) {background-color: #f6f8fa;}
+
+
+
+div#text-img-container {
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+/* Base styles for image container */
+div#img-container {
+    float: left;
+    padding-top: 0px;
+    text-align: center;
+}
+
+div#img-container img {
+    padding: 0px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+}
+
+/* Prevent hover effects */
+.no-hover,
+.no-hover:hover,
+.no-hover:active,
+.no-hover:focus {
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+    pointer-events: none !important;
+}
+
+.no-hover img,
+.no-hover:hover img,
+.no-hover:active img,
+.no-hover:focus img {
+    transform: none !important;
+    transition: none !important;
+    will-change: auto !important;
+    pointer-events: none !important;
+}
+
+/* For smaller screens */
+@media screen and (max-width: 768px) {
+    div#layout-content-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    div#img-container {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 15px;
+        width: 100%;
+        position: relative;
+        float: none;
+    }
+
+    div#img-container img {
+        max-width: 80%;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        transform: none !important;
+        transition: none !important;
+        will-change: auto !important;
+    }
+
+    div#text-container {
+        width: 100%;
+        text-align: left;
+        margin-top: 0;
+        padding: 0 10px;
+        position: relative;
+    }
+
+    div#text-container h1,
+    div#text-container h2,
+    div#text-container h3 {
+        text-align: center;
+    }
+}
+
+div#text-container {
+	overflow: hidden;
+	padding-top: 0px;
+}
+
+div#text-container h1{
+	border-bottom: none;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 15px;
+}
+
+div#text-container h2{
+	border-bottom: none;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 15px;
+}
+
+div#text-container h3{
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+div#text-container h1 + h3{
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+div#text-container h3 + h1{
+	padding: 0px;
+	margin: 0px;
+}
+
+div#text-container h2 + h3{
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+div#text-container p{
+}
+
+
+div#main{
+	margin: auto;
+	height:45px;
+	display:inline-block;
+	vertical-align: middle;
+}
+
+.openbtn {
+  font-size: 0;
+  background: none;
+  color: none;
+  border: none;
+}
+
+.openbtn:hover {
+}
+
+
+
+div#layout-menu-container .closebtn {
+	font-size: 0;
+}
+
+div#layout-menu-container .closebtn:hover {
+	background: #fdaeb7;
+	color: #cb2431;
+}
+
+
+/* Default light mode */
+:root {
+  --background-color: white;
+  --text-color: black;
+  --link-color: #0366d6;
+  --icon-color: #14003a;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #313334; /* Dark background */
+    color: white;  /* Light text color */
+}
+
+body.dark-mode a {
+    color: #66c7ff;  /* Light blue links in dark mode */
+}
+
+body.dark-mode #layout {
+    background-color: #313334; /* Dark background for the layout */
+}
+
+/* Dark mode: current menu item style */
+body.dark-mode #layout-menu a.current:link,
+body.dark-mode #layout-menu a.current:visited {
+    color: white; /* Bright yellow for the current menu item */
+    text-decoration: none; /* No underline */
+}
+
+body.dark-mode #header-container {
+    background-color: #313334; /* Dark background for the header */
+}
+
+/* Dark mode hover effect */
+body.dark-mode div#header-text-container a:hover {
+    color: #FFA500; /* Set your desired hover color for dark mode */
+    transition: color 0.3s ease; /* Smooth transition for the color change */
+}
+
+body.dark-mode div#main-container {
+    background-color: #313334; /* Same dark mode background */
+}
+
+body.dark-mode div#footer {
+    background-color: #313334; /* Dark footer background */
+}
+
+body.dark-mode #footer-container {
+    background-color: #313334; /* Dark background for the footer */
+}
+
+/* Menu in dark mode */
+body.dark-mode #layout-menu {
+    background-color: #14003a; /* Dark menu background */
+    color: white; /* Light text color in the menu */
+}
+
+/* If you have specific sections that need styling, ensure dark mode styles are added here too */
+body.dark-mode #text-container, 
+body.dark-mode #text-img-container {
+    background-color: #313334; /* Dark background for content */
+    color: white; /* Light text */
+}
+
+/* Dark mode for h1, h2, h3 */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #f0ebe7; /* Light gray text for headers */
+}
+
+/* Dark mode for menu text */
+body.dark-mode #layout-menu a {
+    color: white; /* Light gray menu links */
+}
+
+body.dark-mode #layout-menu a:hover {
+    color: #FFA500; /* Pure white for hovered menu links */
+}
+
+/* Dark mode link hover styles */
+body.dark-mode a:hover {
+    color: #f0ebe7; /* Example: Orange color for hovered links in dark mode */
+}
+
+body.dark-mode div.menu-category {
+    color: #ffffff; /* White category text in menu */
+}
+
+body.dark-mode div.menu-item {
+    color: #c0c0c0; /* Light gray text for menu items */
+}
+
+/* Default icon colors */
+.social-icon {
+    font-size: 2.5em;
+    color: var(--icon-color);
+    transition: color 0.2s ease-in-out;
+}
+
+/* Specific styling for LinkedIn icon if needed */
+.fa-brands.fa-linkedin {
+    color: #14003a; /* Your preferred color */
+}
+
+/* Dark mode icon styling */
+body.dark-mode .social-icon {
+    color: #ffffff; /* Change icons to white in dark mode */
+}
+
+body.dark-mode .social-icon:hover {
+    color: #FFA500; /* Highlight effect when hovered */
+}
+
+#menu-toggle {
+    display: none; /* Hidden by default on larger screens */
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    padding: 10px;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+}
+
+
+/* Completely remove circle around dark mode button */
+#darkModeButton {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 0;
+}
+
+/* Make the icon itself stand alone with no wrapping elements */
+#darkModeButton i {
+    color: white;
+    font-size: 20px;
+}
+
+/* Check HTML structure - if the button is nested in another element with border */
+#header #darkModeButton,
+div > #darkModeButton,
+#header-container #darkModeButton {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* Target any potential wrapper that might have the border */
+#darkModeButton * {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Apply variables */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+
+/* Adjust title for smaller screens */
+@media screen and (max-width: 768px) {
+    div#header-text-container {
+        font-size: 0px; /* Hide the title */
+        margin-left: 0; /* Adjust margin if needed */
+        text-align: center;
+        flex: 1; /* Allow flexibility for alignment */
+        visibility: visible; /* Ensure it remains visible */
+    }
+
+    div#header-text-container a {
+        font-size: 0px; /* Match smaller size */
+        font-weight: normal; /* Adjust weight if necessary */
+    }
+}
+
+/* Adjust link font size for smaller screens */
+@media screen and (max-width: 768px) {
+    div#layout-menu a {
+        font-size: 8x; /* Make the font size smaller */
+        padding: 5px 3px; /* Adjust padding for spacing */
+    }
+}
+
+/* Mobile Menu Styles */
+@media screen and (max-width: 768px) {
+    #menu-toggle {
+        display: block !important; /* Force display */
+        position: absolute !important;
+        left: 15px !important;
+        top: 12px !important; /* Positioned as requested */
+        z-index: 1000 !important; /* Ensure it's above other elements */
+        color: white !important;
+        font-size: 28px !important;
+        background-color: transparent !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 8px !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* Add a more specific selector to ensure this rule isn't overridden */
+    body #main-container #header-container #header #menu-toggle {
+        display: block !important;
+    }
+    
+    /* Make the hamburger icon explicitly visible if using Font Awesome */
+    #menu-toggle i.fa-bars {
+        display: inline-block !important;
+        color: white !important;
+    }
+    
+    #layout-menu-container {
+        position: fixed;
+        top: 0;
+        left: -250px; /* Off-screen by default */
+        width: 250px;
+        height: 100%;
+        background: #14003a;
+        transition: 0.3s;
+        z-index: 999;
+        overflow-y: auto;
+        padding-top: 60px;
+    }
+    
+    #layout-menu-container.active {
+        left: 0; /* Slide in when active */
+    }
+    
+    #layout-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .closebtn {
+        display: block !important;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px !important;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+/* Mobile menu toggle functions
+function openNav() {
+    document.getElementById("layout-menu-container").classList.add("active");
+}
+
+function closeNav() {
+    document.getElementById("layout-menu-container").classList.remove("active");
+}
+
+// Event listener for the toggle button
+document.getElementById("menu-toggle").addEventListener("click", function() {
+    const menuContainer = document.getElementById("layout-menu-container");
+    if (menuContainer.classList.contains("active")) {
+        closeNav();
+    } else {
+        openNav();
+    }
+});
+
+// Close menu when clicking outside
+document.addEventListener("click", function(event) {
+    const menuContainer = document.getElementById("layout-menu-container");
+    const menuToggle = document.getElementById("menu-toggle");
+    
+    if (menuContainer.classList.contains("active") && 
+        !menuContainer.contains(event.target) && 
+        event.target !== menuToggle) {
+        closeNav();
+    }
+});
+
+/* Hide the header menu links on mobile screens */
+@media screen and (max-width: 768px) {
+    #header-icon-text-container #layout-menu {
+        display: none !important; /* Force hide the menu links in the header */
+    }
+    
+    /* Make header text container take less space */
+    #header-text-container {
+        flex: 0 1 auto; /* Allow shrinking */
+    }
+    
+    /* Adjust the header container spacing */
+    #header-icon-text-container {
+        justify-content: center; /* Center the header text */
+    }
+    
+    /* Ensure the dark mode button is positioned correctly */
+    #darkModeButton {
+        position: absolute;
+        right: 15px;
+    }
+}
+
+/* Additional mobile improvements */
+@media screen and (max-width: 768px) {
+    /* Add padding for the toggle button */
+    #header-icon-text-container {
+        padding-left: 40px; /* Make room for the toggle button */
+    }
+    
+    /* Make the toggle button more visible */
+    #menu-toggle {
+        color: white;
+        font-size: 28px; /* Larger icon */
+    }
+    
+    /* Make sure site title is visible on mobile */
+    #header-text-container a {
+        font-size: 24px !important; /* Override any previous mobile styling */
+        visibility: visible !important;
+    }
+}
+
+/* Fix mobile sidebar menu styling */
+@media screen and (max-width: 768px) {
+    /* Existing mobile menu styles */
+    
+    /* Center align the menu items in the sidebar */
+    #layout-menu-container #layout-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center horizontally */
+        justify-content: flex-start; /* Start from the top */
+        gap: 20px; /* More space between items */
+        padding: 15px;
+        left: 0; /* Reset the left position that's affecting the text */
+        position: static; /* Remove relative positioning */
+    }
+    
+    /* Fix the font display for menu items */
+    #layout-menu-container #layout-menu a {
+        font-size: 22px; /* Larger font size for better visibility */
+        text-align: center;
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        margin: 0;
+    }
+    
+    /* Style the close button */
+    .closebtn {
+        display: block !important;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 30px !important; /* Make it larger */
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    
+    /* Fix the menu container padding */
+    #layout-menu-container {
+        padding-top: 80px; /* More space at the top for the close button */
+    }
+}
+
+/* Center the header text between toggle and dark mode buttons */
+@media screen and (max-width: 768px) {
+    /* Position the header container */
+    #header {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+    }
+    
+    /* Make the header text visible and centered */
+    #header-text-container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 24px !important;
+        visibility: visible !important;
+        width: auto;
+        z-index: 1;
+    }
+    
+    /* Ensure the text is visible */
+    #header-text-container a {
+        font-size: 24px !important;
+        visibility: visible !important;
+        display: block;
+        color: white;
+    }
+    
+    /* Adjust toggle button position */
+    #menu-toggle {
+        position: relative;
+        left: 0;
+        margin-right: auto;
+    }
+    
+    /* Adjust dark mode button position */
+    #darkModeButton {
+        position: relative;
+        right: 0;
+        margin-left: auto;
+    }
+    
+    /* Hide the icon-text-container's default styling */
+    #header-icon-text-container {
+        width: 100%;
+        justify-content: center;
+        padding: 0;
+    }
+}
+
+/* Update any existing LinkedIn-specific styles */
+.fa-linkedin, 
+.fa-brands.fa-linkedin,
+i[class*="linkedin"] {
+    /* Your desired styling */
+    color: #14003a;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+/* Dark mode button styling for larger screens */
+@media screen and (min-width: 769px) {
+    #darkModeButton {
+        right: calc((100vw - 925px) / 2 - 10px) !important;
+        width: 24px !important; /* Match awards.html size */
+        height: 24px !important; /* Match awards.html size */
+    }
+
+    #darkModeButton i {
+        font-size: 24px !important; /* Match awards.html icon size */
+    }
+}
+
+/* Base dark mode button styles */
+#darkModeButton {
+    position: absolute !important;
+    right: 15px !important;
+    top: 12px !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    z-index: 1000 !important;
+}
+
+#darkModeButton i {
+    color: white !important;
+    line-height: 1 !important;
+    text-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
