@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
   "http://www.w3.org/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
@@ -443,10 +443,20 @@ body.dark-mode .abstract-content {
             const data = {};
             let currentKey = null;
             let multilineValues = {};
+            const validKeys = new Set([
+                'link',
+                'title',
+                'authors',
+                'journal info',
+                'image',
+                'image alt',
+                'image max width',
+                'abstract'
+            ]);
 
             for (const line of lines) {
                 const match = line.match(/^([a-z ]+):\s*(.*)$/i);
-                if (match) {
+                if (match && validKeys.has(match[1].toLowerCase().trim())) {
                     const key = match[1].toLowerCase().trim();
                     const value = match[2].trim();
                     currentKey = key;
